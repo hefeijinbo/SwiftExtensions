@@ -9,7 +9,7 @@
 import XCTest
 @testable import SwiftExtensions
 
-class SwiftExtensionsTests: XCTestCase {
+class Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -26,8 +26,10 @@ class SwiftExtensionsTests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        do {
+            try [5: 4].jsonData()
+        } catch let error as NSError {
+            print(error)
         }
     }
 
