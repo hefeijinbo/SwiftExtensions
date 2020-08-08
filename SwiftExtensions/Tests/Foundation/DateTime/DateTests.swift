@@ -17,6 +17,7 @@ class DateTests: XCTestCase {
     }
 
     func testPerformanceExample() {
+        print(NSAttributedString(string: "test", attributes: [.font: UIFont.systemFont(ofSize: 10)]).bolded)
     }
 
 }

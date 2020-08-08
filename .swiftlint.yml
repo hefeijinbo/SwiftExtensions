@@ -1,0 +1,36 @@
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+    - Carthage
+    - Pods/SwiftProtobuf
+    - Pods/Alamofire
+    - Pods/SwipeCellKit.timex
+    - Pods/Kingfisher
+    - Pods/Moya
+    - Pods/DeviceKit
+    - Pods/RxSwift
+    - Pods/RxCocoa
+    - Timex/App/Device/Logic/PeripheralStatistic #金波
+line_length:
+    warning: 120
+    ignores_function_declarations: true
+    ignores_comments: true
+    
+disabled_rules: # 执行时排除掉的规则
+    - trailing_whitespace   # 每一个空行不能有空格，会与Xcode换行后自动对齐生成的空格冲突，建议排除掉
+    - implicit_getter
+    - large_tuple
+identifier_name:
+  excluded:
+    - i
+    - idx
+    - h
+    - w
+    - x
+    - y
+    - id
+    - url
+    - min
+    - max
+    - r
+    - g
+    - b
+    - a
