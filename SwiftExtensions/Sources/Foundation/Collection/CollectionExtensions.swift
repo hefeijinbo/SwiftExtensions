@@ -17,7 +17,7 @@ public extension Collection {
     }
 
     /// 通过使用optional保护数组不越界
-    subscript(safe index: Index) -> Element? {
+    subscript(index: Index) -> Element? {
         return indices.contains(index) ? self[index] : nil
     }
 }
