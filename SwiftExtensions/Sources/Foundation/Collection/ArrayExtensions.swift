@@ -13,7 +13,7 @@ public extension Array {
     ///
     /// [1, 2, 3, 4, 5].safeSwap(from: 3, to: 0) -> [4, 2, 3, 1, 5]
     ///
-    mutating func safeSwap(from index: Index, to otherIndex: Index) {
+    mutating func safeSwap(from index: Int, to otherIndex: Int) {
         guard index != otherIndex else { return }
         guard startIndex..<endIndex ~= index else { return }
         guard startIndex..<endIndex ~= otherIndex else { return }

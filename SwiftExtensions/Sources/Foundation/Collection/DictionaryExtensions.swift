@@ -16,4 +16,32 @@ public extension Dictionary {
         let options = (pretty == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
         return try JSONSerialization.data(withJSONObject: self, options: options)
     }
+    
+    func jsonString(pretty: Bool = false) throws -> String {
+        let data = try jsonData(pretty: pretty)
+        guard let string = String(data: data, encoding: .utf8) else {
+            throw SwiftExtensionsError.invalidData
+        }
+        return string
+    }
+    
+    static func + (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+        var result = lhs
+        rhs.forEach { result[$0] = $1 }
+        return result
+    }
+
+    static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
+        rhs.forEach { lhs[$0] = $1}
+    }
+}
+
+public extension NSDictionary {
+    @objc func jsonData(pretty: Bool = false) throws -> Data {
+        return try (self as Dictionary).jsonData(pretty: pretty)
+    }
+    
+    @objc func jsonString(pretty: Bool = false) throws -> String {
+        return try (self as Dictionary).jsonString(pretty: pretty)
+    }
 }

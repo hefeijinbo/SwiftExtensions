@@ -30,12 +30,14 @@ public enum SwiftExtensionsError: Error {
         }
     }
     case jsonError(reason: JSONErrorReason)
+    case invalidData
 }
 
 extension SwiftExtensionsError: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .jsonError(let reason): return reason.errorDescription
+        case .invalidData: return "包含非utf-8数据"
         }
     }
 }
@@ -46,6 +48,7 @@ extension SwiftExtensionsError: CustomNSError {
     public var errorCode: Int {
         switch self {
         case .jsonError(let reason): return reason.errorCode
+        case .invalidData: return 1000
         }
     }
 }
