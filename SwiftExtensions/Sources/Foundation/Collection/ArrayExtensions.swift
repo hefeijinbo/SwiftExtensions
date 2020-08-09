@@ -22,6 +22,14 @@ public extension Array {
 }
 
 public extension Array where Element: Equatable {
+    /// 从数组中删除items包含的所有实例。
+    @discardableResult
+    mutating func removeAll(_ items: [Element]) -> [Element] {
+        guard !items.isEmpty else { return self }
+        removeAll(where: { items.contains($0) })
+        return self
+    }
+    
     /// 删除数组中所有重复的元素。
     @discardableResult
     mutating func removeDuplicates() -> [Element] {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C4B948324DFFFFC00500FCE /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */; };
+		5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948624E002C900500FCE /* StringExtensions.swift */; };
+		5C4B948B24E0074800500FCE /* SignedNumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */; };
 		5C574D4324DE5A4200A59183 /* DateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D4124DE5A4000A59183 /* DateTests.swift */; };
 		5C574D4724DE5D9600A59183 /* DataExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D4624DE5D9600A59183 /* DataExtensions.swift */; };
 		5C574D4924DE775700A59183 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D4824DE775700A59183 /* NSAttributedStringExtensions.swift */; };
@@ -39,6 +42,7 @@
 		5C574D7E24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */; };
 		5C574D7F24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */; };
 		5C574D8024DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */; };
+		5C758E4D24DF9783007BCE17 /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */; };
 		E4DB869524DE295F0042F79D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869424DE295F0042F79D /* AppDelegate.swift */; };
 		E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869624DE295F0042F79D /* SceneDelegate.swift */; };
 		E4DB869924DE295F0042F79D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869824DE295F0042F79D /* ViewController.swift */; };
@@ -70,6 +74,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
+		5C4B948624E002C900500FCE /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedNumericExtensions.swift; sourceTree = "<group>"; };
 		5C574D4124DE5A4000A59183 /* DateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTests.swift; sourceTree = "<group>"; };
 		5C574D4624DE5D9600A59183 /* DataExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtensions.swift; sourceTree = "<group>"; };
 		5C574D4824DE775700A59183 /* NSAttributedStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtensions.swift; sourceTree = "<group>"; };
@@ -84,6 +91,7 @@
 		5C574D7024DEC43800A59183 /* CollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExtensions.swift; sourceTree = "<group>"; };
 		5C574D7424DED74B00A59183 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftExtensionsError.swift; sourceTree = "<group>"; };
+		5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableExtensions.swift; sourceTree = "<group>"; };
 		E4DB869124DE295F0042F79D /* SwiftExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DB869424DE295F0042F79D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4DB869624DE295F0042F79D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -149,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				5C574D4624DE5D9600A59183 /* DataExtensions.swift */,
+				5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -250,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				5C574D6824DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift */,
+				5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */,
 			);
 			path = Number;
 			sourceTree = "<group>";
@@ -257,6 +267,7 @@
 		E4DB86C924DE2D190042F79D /* String */ = {
 			isa = PBXGroup;
 			children = (
+				5C4B948624E002C900500FCE /* StringExtensions.swift */,
 				5C574D6C24DEBB6400A59183 /* CharacterExtensions.swift */,
 				5C574D4824DE775700A59183 /* NSAttributedStringExtensions.swift */,
 			);
@@ -277,6 +288,7 @@
 				5C574D6024DEAE3C00A59183 /* ArrayExtensions.swift */,
 				5C574D7024DEC43800A59183 /* CollectionExtensions.swift */,
 				5C574D7424DED74B00A59183 /* DictionaryExtensions.swift */,
+				5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */,
 			);
 			path = Collection;
 			sourceTree = "<group>";
@@ -421,9 +433,13 @@
 				E4DB869924DE295F0042F79D /* ViewController.swift in Sources */,
 				E4DB86CF24DE2E1F0042F79D /* DateExtensions.swift in Sources */,
 				E4DB869524DE295F0042F79D /* AppDelegate.swift in Sources */,
+				5C758E4D24DF9783007BCE17 /* DecodableExtensions.swift in Sources */,
+				5C4B948B24E0074800500FCE /* SignedNumericExtensions.swift in Sources */,
 				5C574D4724DE5D9600A59183 /* DataExtensions.swift in Sources */,
 				E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */,
+				5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */,
 				5C574D7E24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
+				5C4B948324DFFFFC00500FCE /* SequenceExtensions.swift in Sources */,
 				5C574D6924DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
 				5C574D6124DEAE3C00A59183 /* ArrayExtensions.swift in Sources */,
 				5C574D4924DE775700A59183 /* NSAttributedStringExtensions.swift in Sources */,

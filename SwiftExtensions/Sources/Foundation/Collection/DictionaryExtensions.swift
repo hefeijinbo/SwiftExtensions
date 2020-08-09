@@ -9,6 +9,14 @@
 import Foundation
 
 public extension Dictionary {
+    func has(key: Key) -> Bool {
+        return index(forKey: key) != nil
+    }
+    
+    mutating func removeAll<S: Sequence>(keys: S) where S.Element == Key {
+        keys.forEach { removeValue(forKey: $0) }
+    }
+    
     func jsonData(pretty: Bool = false) throws -> Data {
         guard JSONSerialization.isValidJSONObject(self) else {
             throw SwiftExtensionsError.jsonError(reason: .invalidJSON)
@@ -37,11 +45,21 @@ public extension Dictionary {
 }
 
 public extension NSDictionary {
+    @objc func has(key: NSObject) -> Bool {
+        return (self as Dictionary).has(key: key)
+    }
+    
     @objc func jsonData(pretty: Bool = false) throws -> Data {
         return try (self as Dictionary).jsonData(pretty: pretty)
     }
     
     @objc func jsonString(pretty: Bool = false) throws -> String {
         return try (self as Dictionary).jsonString(pretty: pretty)
+    }
+}
+
+public extension NSMutableDictionary {
+    @objc func removeAll(keys: [Any]) {
+        keys.forEach { removeObject(forKey: $0) }
     }
 }
