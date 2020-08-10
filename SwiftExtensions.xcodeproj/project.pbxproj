@@ -43,6 +43,26 @@
 		5C574D7F24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */; };
 		5C574D8024DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */; };
 		5C758E4D24DF9783007BCE17 /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */; };
+		E448080924E0C65400DB6F81 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */; };
+		E448080A24E0CA7000DB6F81 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
+		E448080B24E0CA7100DB6F81 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
+		E448080C24E0CA7300DB6F81 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */; };
+		E448080D24E0CA7300DB6F81 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */; };
+		E448080E24E0CA7600DB6F81 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
+		E448080F24E0CA7600DB6F81 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
+		E448081024E0CA7900DB6F81 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
+		E448081124E0CA7900DB6F81 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
+		E448081224E0CA7F00DB6F81 /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */; };
+		E448081324E0CA7F00DB6F81 /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */; };
+		E448081424E0CA8500DB6F81 /* SignedNumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */; };
+		E448081524E0CA8500DB6F81 /* SignedNumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */; };
+		E448081624E0CA8B00DB6F81 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948624E002C900500FCE /* StringExtensions.swift */; };
+		E448081724E0CA8B00DB6F81 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948624E002C900500FCE /* StringExtensions.swift */; };
+		E448081824E0CA9600DB6F81 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */; };
+		E448081924E0CA9600DB6F81 /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */; };
+		E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
+		E4D103CD24E0408900B8A4B0 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
+		E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
 		E4DB869524DE295F0042F79D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869424DE295F0042F79D /* AppDelegate.swift */; };
 		E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869624DE295F0042F79D /* SceneDelegate.swift */; };
 		E4DB869924DE295F0042F79D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869824DE295F0042F79D /* ViewController.swift */; };
@@ -92,6 +112,10 @@
 		5C574D7424DED74B00A59183 /* DictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryExtensions.swift; sourceTree = "<group>"; };
 		5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftExtensionsError.swift; sourceTree = "<group>"; };
 		5C758E4C24DF9783007BCE17 /* DecodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableExtensions.swift; sourceTree = "<group>"; };
+		E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
+		E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperateQueueExtensions.swift; sourceTree = "<group>"; };
+		E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		E4DB869124DE295F0042F79D /* SwiftExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DB869424DE295F0042F79D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4DB869624DE295F0042F79D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +203,24 @@
 			path = Public;
 			sourceTree = "<group>";
 		};
+		E4D103C924E03ED500B8A4B0 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */,
+				E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
+		E4D103CE24E04D9600B8A4B0 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */,
+				E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
 		E4DB868824DE295F0042F79D = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +278,8 @@
 		E4DB86C524DE2AFE0042F79D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E4D103CE24E04D9600B8A4B0 /* UIKit */,
+				E4D103C924E03ED500B8A4B0 /* Queue */,
 				E4DB86C624DE2D190042F79D /* Foundation */,
 				5C574D5224DE9DFD00A59183 /* Network */,
 				5C574D7824DEDD6F00A59183 /* Public */,
@@ -426,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C574D5424DE9E1100A59183 /* URLExtensions.swift in Sources */,
+				E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */,
 				5C574D7124DEC43800A59183 /* CollectionExtensions.swift in Sources */,
 				5C574D7524DED74B00A59183 /* DictionaryExtensions.swift in Sources */,
 				5C574D5824DEA25400A59183 /* URLRequestExtensions.swift in Sources */,
@@ -436,10 +481,13 @@
 				5C758E4D24DF9783007BCE17 /* DecodableExtensions.swift in Sources */,
 				5C4B948B24E0074800500FCE /* SignedNumericExtensions.swift in Sources */,
 				5C574D4724DE5D9600A59183 /* DataExtensions.swift in Sources */,
+				E4D103CD24E0408900B8A4B0 /* OperateQueueExtensions.swift in Sources */,
 				E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */,
 				5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */,
+				E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */,
 				5C574D7E24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
 				5C4B948324DFFFFC00500FCE /* SequenceExtensions.swift in Sources */,
+				E448080924E0C65400DB6F81 /* UIAlertControllerExtensions.swift in Sources */,
 				5C574D6924DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
 				5C574D6124DEAE3C00A59183 /* ArrayExtensions.swift in Sources */,
 				5C574D4924DE775700A59183 /* NSAttributedStringExtensions.swift in Sources */,
@@ -452,17 +500,25 @@
 			files = (
 				5C574D5524DE9E1100A59183 /* URLExtensions.swift in Sources */,
 				5C574D7224DEC43800A59183 /* CollectionExtensions.swift in Sources */,
+				E448080C24E0CA7300DB6F81 /* UIAlertControllerExtensions.swift in Sources */,
+				E448081624E0CA8B00DB6F81 /* StringExtensions.swift in Sources */,
 				5C574D7624DED74B00A59183 /* DictionaryExtensions.swift in Sources */,
 				5C574D5924DEA25400A59183 /* URLRequestExtensions.swift in Sources */,
+				E448081824E0CA9600DB6F81 /* SequenceExtensions.swift in Sources */,
+				E448080E24E0CA7600DB6F81 /* DispatchQueueExtensions.swift in Sources */,
 				5C574D6E24DEBB6400A59183 /* CharacterExtensions.swift in Sources */,
 				5C574D4324DE5A4200A59183 /* DateTests.swift in Sources */,
 				5C574D4D24DE8D1700A59183 /* OCTests.m in Sources */,
 				5C574D4E24DE8E6A00A59183 /* NSAttributedStringExtensions.swift in Sources */,
 				E4DB86AC24DE29600042F79D /* Tests.swift in Sources */,
+				E448080A24E0CA7000DB6F81 /* UIColorExtensions.swift in Sources */,
 				E4DB86D024DE2E1F0042F79D /* DateExtensions.swift in Sources */,
+				E448081224E0CA7F00DB6F81 /* DecodableExtensions.swift in Sources */,
 				5C574D7F24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
 				5C574D6A24DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
 				5C574D6224DEAE3C00A59183 /* ArrayExtensions.swift in Sources */,
+				E448081424E0CA8500DB6F81 /* SignedNumericExtensions.swift in Sources */,
+				E448081024E0CA7900DB6F81 /* OperateQueueExtensions.swift in Sources */,
 				5C574D5024DE8E6F00A59183 /* DataExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,16 +529,24 @@
 			files = (
 				5C574D8024DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
 				E4DB86B724DE29600042F79D /* UITests.swift in Sources */,
+				E448080D24E0CA7300DB6F81 /* UIAlertControllerExtensions.swift in Sources */,
+				E448080B24E0CA7100DB6F81 /* UIColorExtensions.swift in Sources */,
 				5C574D6B24DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
+				E448081324E0CA7F00DB6F81 /* DecodableExtensions.swift in Sources */,
 				5C574D7724DED74B00A59183 /* DictionaryExtensions.swift in Sources */,
 				5C574D5A24DEA25400A59183 /* URLRequestExtensions.swift in Sources */,
+				E448081924E0CA9600DB6F81 /* SequenceExtensions.swift in Sources */,
 				5C574D6324DEAE3C00A59183 /* ArrayExtensions.swift in Sources */,
+				E448081524E0CA8500DB6F81 /* SignedNumericExtensions.swift in Sources */,
 				5C574D5124DE8E7000A59183 /* DataExtensions.swift in Sources */,
+				E448080F24E0CA7600DB6F81 /* DispatchQueueExtensions.swift in Sources */,
 				5C574D7324DEC43800A59183 /* CollectionExtensions.swift in Sources */,
 				5C574D6F24DEBB6400A59183 /* CharacterExtensions.swift in Sources */,
+				E448081124E0CA7900DB6F81 /* OperateQueueExtensions.swift in Sources */,
 				5C574D5624DE9E1100A59183 /* URLExtensions.swift in Sources */,
 				E4DB86D124DE2E1F0042F79D /* DateExtensions.swift in Sources */,
 				5C574D4F24DE8E6A00A59183 /* NSAttributedStringExtensions.swift in Sources */,
+				E448081724E0CA8B00DB6F81 /* StringExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

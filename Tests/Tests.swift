@@ -27,9 +27,9 @@ class Tests: XCTestCase {
     func testPerformanceExample() {
         // This is an example of a performance test case.
         do {
-//            try [5: 4].jsonData()
+            let _ = try [5: 4].jsonData()
             print(" Hello world ".trimmingCharacters(in: .whitespacesAndNewlines))
-        } catch let error as NSError {
+        } catch let error {
             print(error)
         }
     }
