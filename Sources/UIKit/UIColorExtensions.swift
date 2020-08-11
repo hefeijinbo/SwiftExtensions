@@ -52,7 +52,7 @@ public extension UIColor {
     }
     
     /// UIColor 的 RGB A 成分  (0 和 255之间).
-    var rgbComponents: (red: Int, green: Int, blue: Int, alpha: Int) {
+    var rgbaComponents: (red: Int, green: Int, blue: Int, alpha: Int) {
         let components: [CGFloat] = {
             let comps: [CGFloat] = cgColor.components!
             guard comps.count != 4 else { return comps }
@@ -65,9 +65,9 @@ public extension UIColor {
         return (red: Int(red * 255.0), green: Int(green * 255.0), blue: Int(blue * 255.0), alpha: Int(alpha * 255.0))
     }
     
-    /// UIColor 的 RGB A 成分  (0 和 255之间). [red green blue alpha]
-    @objc var rgbComponentsArray: [Int] {
-        let tuple = rgbComponents
+    /// UIColor 的 RGB A 成分数组  (0 和 255之间). [red green blue alpha]
+    @objc var rgbaComponentsArray: [Int] {
+        let tuple = rgbaComponents
         return [tuple.red, tuple.green, tuple.blue, tuple.alpha]
     }
 

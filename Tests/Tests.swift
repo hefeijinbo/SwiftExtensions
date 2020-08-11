@@ -26,6 +26,8 @@ class Tests: XCTestCase {
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
+        let desc = String(describing: TestViewController.self)
+        print(desc)
         do {
             let _ = try [5: 4].jsonData()
             print(" Hello world ".trimmingCharacters(in: .whitespacesAndNewlines))
@@ -34,4 +36,8 @@ class Tests: XCTestCase {
         }
     }
 
+}
+
+class TestViewController: UIViewController {
+    
 }
