@@ -20,15 +20,6 @@ public extension UIViewController {
         child.didMove(toParent: self)
     }
     
-    /// 从其parent viewController中移除。
-    @objc func removeFromParentViewController() {
-        guard parent != nil else { return }
-
-        willMove(toParent: nil)
-        removeFromParent()
-        view.removeFromSuperview()
-    }
-    
     /// 以弹出窗口(popover)的形式呈现UIViewController。
     ///
     /// - Parameters:

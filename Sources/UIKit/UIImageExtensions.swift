@@ -85,8 +85,22 @@ public extension UIImage {
         return newImage
     }
 
-    /// 填充颜色
-    @objc func filled(withColor color: UIColor) -> UIImage {
+    /// 着色
+    @objc func tint(color: UIColor, blendMode: CGBlendMode, alpha: CGFloat = 1.0) -> UIImage {
+        let drawRect = CGRect(origin: .zero, size: size)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        let context = UIGraphicsGetCurrentContext()
+        color.setFill()
+        context?.fill(drawRect)
+        draw(in: drawRect, blendMode: blendMode, alpha: alpha)
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+    
+    /// 填充前景色
+    @objc func fillColor(_ color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         color.setFill()
         guard let context = UIGraphicsGetCurrentContext() else { return self }
@@ -105,22 +119,8 @@ public extension UIImage {
         return newImage
     }
 
-    /// 着色
-    @objc func tint(color: UIColor, blendMode: CGBlendMode, alpha: CGFloat = 1.0) -> UIImage {
-        let drawRect = CGRect(origin: .zero, size: size)
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        defer {
-            UIGraphicsEndImageContext()
-        }
-        let context = UIGraphicsGetCurrentContext()
-        color.setFill()
-        context?.fill(drawRect)
-        draw(in: drawRect, blendMode: blendMode, alpha: alpha)
-        return UIGraphicsGetImageFromCurrentImageContext()!
-    }
-
-    /// 设置背景色, 所有 alpha < 1 的位置可以看到背景色
-    @objc func withBackgroundColor(_ backgroundColor: UIColor) -> UIImage {
+    /// 填充背景色, 所有 alpha < 1 的位置可以看到背景色
+    @objc func fillBackgroundColor(_ backgroundColor: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         defer { UIGraphicsEndImageContext() }
         backgroundColor.setFill()
@@ -129,11 +129,11 @@ public extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
 
-    /// 带有圆角的UIImage
+    /// 添加圆角
     ///
     /// - Parameters:
     ///   - radius: 如果半径设置0, 使用最大半径 min(size.width, size.height) / 2
-    @objc func withRoundedCorners(radius: CGFloat) -> UIImage? {
+    @objc func addRoundedCorners(radius: CGFloat) -> UIImage? {
         let maxRadius = min(size.width, size.height) / 2
         let cornerRadius: CGFloat
         if radius > 0 && radius <= maxRadius {

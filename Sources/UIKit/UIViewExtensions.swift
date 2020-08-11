@@ -126,8 +126,8 @@ public extension UIView {
         return nil
     }
     
-    /// 设置部分圆角
-    @objc func setRoundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+    /// 添加部分圆角
+    @objc func addRoundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let maskPath = UIBezierPath(
             roundedRect: bounds,
             byRoundingCorners: corners,
@@ -161,4 +161,42 @@ public extension UIView {
         subview.topAnchor.constraint(equalTo: topAnchor).isActive = true
         subview.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }
+    
+    /// 视图边缘添加分割线
+    @discardableResult
+    @objc func addLine(direction: UIViewLineDirection, bgColor: UIColor, spacing: CGFloat) -> UIView {
+        let line = UIView()
+        addSubview(line)
+        line.backgroundColor = bgColor
+        switch direction {
+        case .left:
+            line.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+            line.topAnchor.constraint(equalTo: self.topAnchor, constant: spacing).isActive = true
+            line.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spacing).isActive = true
+            line.widthAnchor.constraint(equalToConstant: 1).isActive = true
+        case .right:
+            line.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+            line.topAnchor.constraint(equalTo: self.topAnchor, constant: spacing).isActive = true
+            line.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: spacing).isActive = true
+            line.widthAnchor.constraint(equalToConstant: 1).isActive = true
+        case .top:
+            line.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            line.leftAnchor.constraint(equalTo: self.leftAnchor, constant: spacing).isActive = true
+            line.rightAnchor.constraint(equalTo: self.rightAnchor, constant: spacing).isActive = true
+            line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        case .bottom:
+            line.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            line.leftAnchor.constraint(equalTo: self.leftAnchor, constant: spacing).isActive = true
+            line.rightAnchor.constraint(equalTo: self.rightAnchor, constant: spacing).isActive = true
+            line.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        }
+        return line
+    }
+}
+
+@objc public enum UIViewLineDirection: Int {
+    case left = 0
+    case right
+    case top
+    case bottom
 }

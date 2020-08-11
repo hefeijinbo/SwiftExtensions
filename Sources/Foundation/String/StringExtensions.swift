@@ -9,6 +9,10 @@
 import UIKit
 
 public extension String {
+    func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
+        return (self as NSString).boundingRectWidth(fontSize: fontSize)
+    }
+    
     var base64Decoded: String? {
         let remainder = count % 4
         var padding = ""
@@ -94,6 +98,11 @@ public extension String {
 }
 
 public extension NSString {
+    /// 计算显示宽度
+    @objc func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
+        return boundingRect(with: CGSize(width: CGFloat.infinity, height: 40), attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).width
+    }
+    
     @objc var base64Decoded: String? {
         return (self as NSString).base64Decoded
     }
