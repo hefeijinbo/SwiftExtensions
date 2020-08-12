@@ -2,7 +2,7 @@
 //  StringExtensions+Valid.swift
 //  SwiftExtensions
 //
-//  Created by yons on 2020/8/12.
+//  Created by jinbo on 2020/8/12.
 //  Copyright © 2020 SwiftExtensions. All rights reserved.
 //
 

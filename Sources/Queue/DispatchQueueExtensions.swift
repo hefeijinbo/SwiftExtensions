@@ -7,8 +7,26 @@
 //
 
 import Dispatch
+import Foundation
 
 public extension DispatchQueue {
+    // 安全的同步调用,防止死锁
+    func syncSafe(_ execute: () -> Void) {
+        if label == String(cString: __dispatch_queue_get_label(nil)) {
+            execute()
+            return
+        }
+        sync(execute: execute)
+    }
+    
+    func asyncSafe(_ execute: @escaping () -> Void) {
+        if self === DispatchQueue.main && Thread.isMainThread {
+            execute()
+        } else {
+            async(execute: execute)
+        }
+    }
+    
     static var isMainQueue: Bool {
         enum Static {
             static var key: DispatchSpecificKey<Void> = {

@@ -9,6 +9,14 @@
 import UIKit
 
 public extension UIColor {
+    @objc static func whiteWithAlpha(_ alpha: CGFloat) -> UIColor {
+        return UIColor.white.withAlphaComponent(alpha)
+    }
+    
+    @objc static func blackWithAlpha(_ alpha: CGFloat) -> UIColor {
+        return UIColor.black.withAlphaComponent(alpha)
+    }
+    
     @objc static func color(r: Int, g: Int, b: Int, alpha: CGFloat = 1) -> UIColor {
         return UIColor(r: r, g: g, b: b, alpha: alpha)
     }

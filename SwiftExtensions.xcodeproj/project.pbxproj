@@ -64,6 +64,7 @@
 		5CD9B5E424E2E026001BA882 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */; };
 		5CD9B5E524E2E075001BA882 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */; };
 		5CD9B5E624E2E075001BA882 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */; };
+		5CD9C68B24E42C78001BA882 /* BinaryIntegerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9C68A24E42C78001BA882 /* BinaryIntegerExtensions.swift */; };
 		E448080924E0C65400DB6F81 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */; };
 		E448080A24E0CA7000DB6F81 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
 		E448080B24E0CA7100DB6F81 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
@@ -154,6 +155,7 @@
 		5CD9B5DF24E2DCDB001BA882 /* UITextViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextViewExtensions.swift; sourceTree = "<group>"; };
 		5CD9B5E124E2DDEE001BA882 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		5CD9C68A24E42C78001BA882 /* BinaryIntegerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryIntegerExtensions.swift; sourceTree = "<group>"; };
 		E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		E46247ED24E210CA008AA568 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		E46247EF24E215FB008AA568 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			children = (
 				5C574D6824DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift */,
 				5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */,
+				5CD9C68A24E42C78001BA882 /* BinaryIntegerExtensions.swift */,
 			);
 			path = Number;
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				5C574D7524DED74B00A59183 /* DictionaryExtensions.swift in Sources */,
 				5CD9B5DC24E2DAFC001BA882 /* UITableViewExtensions.swift in Sources */,
 				5C574D5824DEA25400A59183 /* URLRequestExtensions.swift in Sources */,
+				5CD9C68B24E42C78001BA882 /* BinaryIntegerExtensions.swift in Sources */,
 				5C574D6D24DEBB6400A59183 /* CharacterExtensions.swift in Sources */,
 				E46247F024E215FB008AA568 /* UILabelExtensions.swift in Sources */,
 				E4DB869924DE295F0042F79D /* ViewController.swift in Sources */,

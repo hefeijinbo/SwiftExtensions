@@ -28,7 +28,7 @@ public extension NSNumber {
         return formatter.string(from: self) ?? ""
     }
     
-    /// 1000_0000
+    /// 1000_0000.000
     @objc var decimalString: String {
         let format = NumberFormatter()
         format.numberStyle = .decimal
