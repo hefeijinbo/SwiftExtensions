@@ -17,7 +17,7 @@
 }
 
 - (void)testEmailLogin {
-    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"test" foregroundColor:UIColor.redColor systemFontSize:15].bolded.struckthrough;
+    NSAttributedString *attributedString = [[NSAttributedString alloc] initWithString:@"test" foregroundColor:UIColor.redColor systemFontSize:15].bold.strikethrough;
     NSLog(@"%@", attributedString);
 }
 

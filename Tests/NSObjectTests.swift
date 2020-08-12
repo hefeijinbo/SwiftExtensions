@@ -1,7 +1,14 @@
-import XCTest
-@testable import SwiftExtensions
+//
+//  NSObjectTests.swift
+//  Tests
+//
+//  Created by jinbo on 2020/8/13.
+//  Copyright © 2020 SwiftExtensions. All rights reserved.
+//
 
-class DateTests: XCTestCase {
+import XCTest
+
+class NSObjectTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -17,7 +24,11 @@ class DateTests: XCTestCase {
     }
 
     func testPerformanceExample() {
-        print(NSAttributedString(string: "test", attributes: [.font: UIFont.systemFont(ofSize: 10)]).bold)
+        print(String(describing: NSDate.self))
+        print(String(describing: Date.self))
+        print(NSStringFromClass(NSDate.self))
+        print(String(describing: TestViewController.self))
+        print(NSStringFromClass(TestViewController.self))
     }
 
 }

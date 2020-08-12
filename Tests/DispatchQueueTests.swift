@@ -1,15 +1,14 @@
 //
-//  Tests.swift
-//  SwiftExtensions
+//  DispatchQueueTests.swift
+//  Tests
 //
-//  Created by jinbo on 2020/8/8.
+//  Created by jinbo on 2020/8/12.
 //  Copyright © 2020 SwiftExtensions. All rights reserved.
 //
 
 import XCTest
-@testable import SwiftExtensions
 
-class Tests: XCTestCase {
+class DispatchQueueTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -25,22 +24,12 @@ class Tests: XCTestCase {
     }
 
     func testPerformanceExample() {
-        // This is an example of a performance test case.
-        let desc = String(describing: TestViewController.self)
-        print(desc)
-        let dic = ["name1": "小王", "name2": "小刘", "name3": "小明"]
-
-        dic.print()
-        do {
-            let _ = try [5: 4].jsonData()
-            print(" Hello world ".trimmingCharacters(in: .whitespacesAndNewlines))
-        } catch let error {
-            print(error)
+        DispatchQueue.global().asyncSafe {
+            print("asyncSafe")
+        }
+        DispatchQueue.global().syncSafe {
+            print("syncSafe")
         }
     }
 
-}
-
-class TestViewController: UIViewController {
-    
 }

@@ -85,6 +85,11 @@
 		E46247EE24E210CA008AA568 /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46247ED24E210CA008AA568 /* UIImageViewExtensions.swift */; };
 		E46247F024E215FB008AA568 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46247EF24E215FB008AA568 /* UILabelExtensions.swift */; };
 		E46247F224E216B4008AA568 /* UINavigationBarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46247F124E216B4008AA568 /* UINavigationBarExtensions.swift */; };
+		E467470C24E4421C0009A800 /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E467470B24E4421C0009A800 /* DispatchQueueTests.swift */; };
+		E4AB3A4724E4B08200CB419C /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */; };
+		E4AB3A4824E4B08500CB419C /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */; };
+		E4AB3A4924E4B08600CB419C /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */; };
+		E4AB3A4B24E4B0C900CB419C /* NSObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */; };
 		E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
 		E4D103CD24E0408900B8A4B0 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
 		E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
@@ -160,6 +165,9 @@
 		E46247ED24E210CA008AA568 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		E46247EF24E215FB008AA568 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		E46247F124E216B4008AA568 /* UINavigationBarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarExtensions.swift; sourceTree = "<group>"; };
+		E467470B24E4421C0009A800 /* DispatchQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueTests.swift; sourceTree = "<group>"; };
+		E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
+		E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTests.swift; sourceTree = "<group>"; };
 		E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperateQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -251,6 +259,14 @@
 			path = Public;
 			sourceTree = "<group>";
 		};
+		E4AB3A4524E4B07700CB419C /* Runtime */ = {
+			isa = PBXGroup;
+			children = (
+				E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */,
+			);
+			path = Runtime;
+			sourceTree = "<group>";
+		};
 		E4D103C924E03ED500B8A4B0 /* Queue */ = {
 			isa = PBXGroup;
 			children = (
@@ -330,6 +346,8 @@
 				5C574D3F24DE5A0100A59183 /* Foundation */,
 				E4DB86AB24DE29600042F79D /* Tests.swift */,
 				E4DB86AD24DE29600042F79D /* Info.plist */,
+				E467470B24E4421C0009A800 /* DispatchQueueTests.swift */,
+				E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -358,6 +376,7 @@
 		E4DB86C624DE2D190042F79D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E4AB3A4524E4B07700CB419C /* Runtime */,
 				5C574D4524DE5D8D00A59183 /* Data */,
 				E4DB86C724DE2D190042F79D /* Number */,
 				E4DB86C924DE2D190042F79D /* String */,
@@ -580,6 +599,7 @@
 				5CD9B5D624E2D77F001BA882 /* UIStoryboardExtensions.swift in Sources */,
 				5CD9B1FE24E18E72001BA882 /* UICollectionViewExtensions.swift in Sources */,
 				5C574D6924DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
+				E4AB3A4724E4B08200CB419C /* NSObjectExtensions.swift in Sources */,
 				5CD9B1FC24E18D01001BA882 /* UIButtonExtensions.swift in Sources */,
 				5C574D6124DEAE3C00A59183 /* ArrayExtensions.swift in Sources */,
 				5C574D4924DE775700A59183 /* NSAttributedStringExtensions.swift in Sources */,
@@ -590,14 +610,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E467470C24E4421C0009A800 /* DispatchQueueTests.swift in Sources */,
 				5CD9B5D924E2DA79001BA882 /* UITabBarExtensions.swift in Sources */,
 				5C574D5524DE9E1100A59183 /* URLExtensions.swift in Sources */,
+				E4AB3A4B24E4B0C900CB419C /* NSObjectTests.swift in Sources */,
 				5C574D7224DEC43800A59183 /* CollectionExtensions.swift in Sources */,
 				E448080C24E0CA7300DB6F81 /* UIAlertControllerExtensions.swift in Sources */,
 				E448081624E0CA8B00DB6F81 /* StringExtensions.swift in Sources */,
 				5C574D7624DED74B00A59183 /* DictionaryExtensions.swift in Sources */,
 				5C574D5924DEA25400A59183 /* URLRequestExtensions.swift in Sources */,
 				E448081824E0CA9600DB6F81 /* SequenceExtensions.swift in Sources */,
+				E4AB3A4824E4B08500CB419C /* NSObjectExtensions.swift in Sources */,
 				E448080E24E0CA7600DB6F81 /* DispatchQueueExtensions.swift in Sources */,
 				5C574D6E24DEBB6400A59183 /* CharacterExtensions.swift in Sources */,
 				5CD9B5E524E2E075001BA882 /* UIViewExtensions.swift in Sources */,
@@ -622,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CD9B5E624E2E075001BA882 /* UIViewExtensions.swift in Sources */,
+				E4AB3A4924E4B08600CB419C /* NSObjectExtensions.swift in Sources */,
 				5C574D8024DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
 				E4DB86B724DE29600042F79D /* UITests.swift in Sources */,
 				E448080D24E0CA7300DB6F81 /* UIAlertControllerExtensions.swift in Sources */,
