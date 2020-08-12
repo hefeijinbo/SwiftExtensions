@@ -98,6 +98,7 @@
 		E4DB86CF24DE2E1F0042F79D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB86CE24DE2E1F0042F79D /* DateExtensions.swift */; };
 		E4DB86D024DE2E1F0042F79D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB86CE24DE2E1F0042F79D /* DateExtensions.swift */; };
 		E4DB86D124DE2E1F0042F79D /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB86CE24DE2E1F0042F79D /* DateExtensions.swift */; };
+		E4DF925024E41F4B00A78C58 /* StringExtensions+Valid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DF924F24E41F4B00A78C58 /* StringExtensions+Valid.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -175,6 +176,7 @@
 		E4DB86B624DE29600042F79D /* UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITests.swift; sourceTree = "<group>"; };
 		E4DB86B824DE29600042F79D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4DB86CE24DE2E1F0042F79D /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
+		E4DF924F24E41F4B00A78C58 /* StringExtensions+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringExtensions+Valid.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				5C4B948624E002C900500FCE /* StringExtensions.swift */,
+				E4DF924F24E41F4B00A78C58 /* StringExtensions+Valid.swift */,
 				5C574D6C24DEBB6400A59183 /* CharacterExtensions.swift */,
 				5C574D4824DE775700A59183 /* NSAttributedStringExtensions.swift */,
 			);
@@ -560,6 +563,7 @@
 				5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */,
 				E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */,
 				5CD9B5DE24E2DC3C001BA882 /* UITextFieldExtensions.swift in Sources */,
+				E4DF925024E41F4B00A78C58 /* StringExtensions+Valid.swift in Sources */,
 				5CD9B20224E18FC3001BA882 /* UIImageExtensions.swift in Sources */,
 				E46247F224E216B4008AA568 /* UINavigationBarExtensions.swift in Sources */,
 				5C574D7E24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,

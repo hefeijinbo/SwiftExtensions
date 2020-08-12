@@ -13,29 +13,47 @@ public extension NSAttributedString {
         self.init(string: string, attributes: [.foregroundColor: foregroundColor, .font: UIFont.systemFont(ofSize: systemFontSize)])
     }
     
+    @objc var medium: NSAttributedString {
+        return applying(attributes: [.font: UIFont.systemFont(ofSize: currentFontSize, weight: .medium)])
+    }
+    
+    @objc var semibold: NSAttributedString {
+        return applying(attributes: [.font: UIFont.systemFont(ofSize: currentFontSize, weight: .semibold)])
+    }
+    
     /// 加粗
-    @objc var bolded: NSAttributedString {
+    @objc var bold: NSAttributedString {
         return applying(attributes: [.font: UIFont.boldSystemFont(ofSize: currentFontSize)])
     }
 
     /// 下划线
-    @objc var underlined: NSAttributedString {
+    @objc var underline: NSAttributedString {
         return applying(attributes: [.underlineStyle: NSUnderlineStyle.single.rawValue])
     }
     
     /// 斜体
-    @objc var italicized: NSAttributedString {
+    @objc var italic: NSAttributedString {
         return applying(attributes: [.font: UIFont.italicSystemFont(ofSize: currentFontSize)])
     }
 
     /// 中划线
-    @objc var struckthrough: NSAttributedString {
+    @objc var strikethrough: NSAttributedString {
         return applying(attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)])
     }
     
     /// 颜色
-    @objc func colored(with color: UIColor) -> NSAttributedString {
+    @objc func foregroundColor(_ color: UIColor) -> NSAttributedString {
         return applying(attributes: [.foregroundColor: color])
+    }
+    
+    /// 添加图片附件
+    @objc func appendAttachment(_ image: String, bounds: CGRect) -> NSAttributedString {
+        let attach = NSTextAttachment()
+        attach.image = UIImage(named: image)
+        attach.bounds = bounds
+        let mutAttributed = NSMutableAttributedString(attributedString: self)
+        mutAttributed.append(NSAttributedString(attachment: attach))
+        return mutAttributed
     }
 
     /// 将属性应用于匹配正则表达式的子字符串

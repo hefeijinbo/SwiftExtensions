@@ -13,6 +13,11 @@ public extension Dictionary {
         return index(forKey: key) != nil
     }
     
+    func print() {
+        let json = try? jsonString(pretty: true)
+        Swift.print(json ?? "")
+    }
+    
     mutating func removeAll<S: Sequence>(keys: S) where S.Element == Key {
         keys.forEach { removeValue(forKey: $0) }
     }
@@ -55,6 +60,11 @@ public extension NSDictionary {
     
     @objc func jsonString(pretty: Bool = false) throws -> String {
         return try (self as Dictionary).jsonString(pretty: pretty)
+    }
+    
+    @objc func print() {
+        let json = try? jsonString(pretty: true)
+        Swift.print(json ?? "")
     }
 }
 

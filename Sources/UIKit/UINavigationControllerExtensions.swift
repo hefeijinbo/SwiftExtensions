@@ -9,6 +9,13 @@
 import UIKit
 
 public extension UINavigationController {
+    @objc func replaceLastWithViewController(_ viewController: UIViewController, animated: Bool) {
+        var array = viewControllers
+        array.removeLast()
+        array.append(viewController)
+        setViewControllers(array, animated: animated)
+    }
+    
     @objc func popViewController(animated: Bool = true, _ completion: (() -> Void)? = nil) {
         guard let completion = completion else {
             popViewController(animated: animated)

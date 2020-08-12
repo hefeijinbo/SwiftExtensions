@@ -10,8 +10,13 @@ import Foundation
 
 public extension SignedNumeric {
     var currencyString: String {
-        // swiftlint:disable:next force_cast
-        (self as! NSNumber).currencyString
+        let number = self as? NSNumber ?? NSNumber()
+        return number.currencyString
+    }
+    
+    var decimalString: String {
+        let number = self as? NSNumber ?? NSNumber()
+        return number.decimalString
     }
 }
 
@@ -20,7 +25,13 @@ public extension NSNumber {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.locale = Locale.current
-        // swiftlint:disable:next force_cast
         return formatter.string(from: self) ?? ""
+    }
+    
+    /// 1000_0000
+    @objc var decimalString: String {
+        let format = NumberFormatter()
+        format.numberStyle = .decimal
+        return format.string(from: self) ?? "0"
     }
 }

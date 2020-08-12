@@ -9,6 +9,27 @@
 import UIKit
 
 public extension UIView {
+    @objc func addGradientLayer(startColor: UIColor,
+                                endColor: UIColor,
+                                startPoint: CGPoint = CGPoint(x: 0, y: 0),
+                                endPoint: CGPoint = CGPoint(x: 0, y: 1)) {
+        var gradientLayer: CAGradientLayer!
+        for layer in layer.sublayers ?? [] {
+            if let layer = layer as? CAGradientLayer {
+                gradientLayer = layer
+                break
+            }
+        }
+        if gradientLayer == nil {
+            gradientLayer = CAGradientLayer()
+            gradientLayer.startPoint = startPoint
+            gradientLayer.endPoint = endPoint
+            gradientLayer.frame = bounds
+            layer.insertSublayer(gradientLayer, at: 0)
+        }
+        gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
+    }
+    
     /// 快照图片
     @objc var screenshotImage: UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
@@ -164,7 +185,7 @@ public extension UIView {
     
     /// 视图边缘添加分割线
     @discardableResult
-    @objc func addLine(direction: UIViewLineDirection, bgColor: UIColor, spacing: CGFloat) -> UIView {
+    @objc func addLine(direction: UIViewDirection, bgColor: UIColor, spacing: CGFloat) -> UIView {
         let line = UIView()
         addSubview(line)
         line.backgroundColor = bgColor
@@ -194,7 +215,7 @@ public extension UIView {
     }
 }
 
-@objc public enum UIViewLineDirection: Int {
+@objc public enum UIViewDirection: Int {
     case left = 0
     case right
     case top

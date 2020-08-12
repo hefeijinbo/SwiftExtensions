@@ -153,14 +153,15 @@ public extension UIImage {
         return image
     }
     
-    /// 根据颜色和大小创建UIImage。
-    @objc convenience init(color: UIColor, size: CGSize) {
-        UIGraphicsBeginImageContextWithOptions(size, false, 1)
+    /// 根据颜色创建UIImage
+    @objc convenience init(color: UIColor) {
+        let rect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 1)
         defer {
             UIGraphicsEndImageContext()
         }
         color.setFill()
-        UIRectFill(CGRect(origin: .zero, size: size))
+        UIRectFill(rect)
         guard let aCgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage else {
             self.init()
             return

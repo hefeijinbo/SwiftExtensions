@@ -15,8 +15,12 @@ public extension UIViewController {
     }
     
     @objc func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
+        for childVC in self.children {
+            childVC.removeFromParent()
+            childVC.view.removeFromSuperview()
+        }
         addChild(child)
-        containerView.addSubview(child.view)
+        containerView.addSubviewToFillContent(child.view)
         child.didMove(toParent: self)
     }
     

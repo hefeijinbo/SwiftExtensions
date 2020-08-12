@@ -7,10 +7,57 @@
 //
 
 import UIKit
+import CommonCrypto
 
 public extension String {
+    var MD5CryptoString: String {
+        let cStrl = cString(using: String.Encoding.utf8);
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16);
+        CC_MD5(cStrl, UInt32(strlen(cStrl!)), buffer);
+        var string = "";
+        for idx in 0...15 {
+            let obcStrl = String.init(format: "%02x", buffer[idx]);
+            string.append(obcStrl);
+        }
+        free(buffer);
+        return string;
+    }
+    
     func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
         return (self as NSString).boundingRectWidth(fontSize: fontSize)
+    }
+    
+    var jsonDic: [String: Any] {
+        guard let data = data(using: .utf8) else {
+            return [:]
+        }
+        let dic = (try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) ?? [:]
+        return dic
+    }
+    
+    var jsonDicArray: [[String: Any]] {
+        guard let data = data(using: .utf8) else {
+            return []
+        }
+        let array = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] ?? []
+        return array ?? []
+    }
+    
+    var intValue: Int {
+        if let value = Int(self) {
+            return value
+        }
+        if let value = Double(self) {
+            return Int(value)
+        }
+        return 0
+    }
+    
+    var doubleValue: Double {
+        if let value = Double(self) {
+            return value
+        }
+        return 0.0
     }
     
     var base64Decoded: String? {
@@ -34,15 +81,6 @@ public extension String {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.date(from: selfLowercased)
-    }
-    
-    var isValidEmail: Bool {
-        let regex = "^(?:[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[\\p{L}0-9!#$%\\&'*+/=?\\^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[\\p{L}0-9](?:[a-z0-9-]*[\\p{L}0-9])?\\.)+[\\p{L}0-9](?:[\\p{L}0-9-]*[\\p{L}0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[\\p{L}0-9-]*[\\p{L}0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])$"
-        return range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
-    }
-    
-    var isValidUrl: Bool {
-        return URL(string: self) != nil
     }
 
     /// 安全下标字符串在给定范围内。
@@ -98,9 +136,21 @@ public extension String {
 }
 
 public extension NSString {
+    @objc var MD5CryptoString: String {
+        return (self as String).MD5CryptoString
+    }
+    
     /// 计算显示宽度
     @objc func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
         return boundingRect(with: CGSize(width: CGFloat.infinity, height: 40), attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).width
+    }
+    
+    @objc var jsonDic: [String: Any] {
+        return (self as NSString).jsonDic
+    }
+    
+    @objc var jsonDicArray: [[String: Any]] {
+        return (self as NSString).jsonDicArray
     }
     
     @objc var base64Decoded: String? {
@@ -113,13 +163,5 @@ public extension NSString {
     
     @objc func date(format: String) -> Date? {
         return (self as NSString).date(format: format)
-    }
-    
-    @objc var isValidEmail: Bool {
-        return (self as NSString).isValidEmail
-    }
-    
-    @objc var isValidUrl: Bool {
-        return (self as NSString).isValidUrl
     }
 }

@@ -9,6 +9,22 @@
 import Foundation
 
 public extension Array {
+    func jsonData(pretty: Bool = false) throws -> Data {
+        guard JSONSerialization.isValidJSONObject(self) else {
+            throw SwiftExtensionsError.jsonError(reason: .invalidJSON)
+        }
+        let options = (pretty == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        return try JSONSerialization.data(withJSONObject: self, options: options)
+    }
+    
+    func jsonString(pretty: Bool = false) throws -> String {
+        let data = try jsonData(pretty: pretty)
+        guard let string = String(data: data, encoding: .utf8) else {
+            throw SwiftExtensionsError.invalidData
+        }
+        return string
+    }
+    
     /// 在给定的指数位置安全地交换值。
     ///
     /// [1, 2, 3, 4, 5].safeSwap(from: 3, to: 0) -> [4, 2, 3, 1, 5]
@@ -39,5 +55,15 @@ public extension Array where Element: Equatable {
             }
         }
         return self
+    }
+}
+
+public extension NSArray {
+    @objc func jsonData(pretty: Bool = false) throws -> Data {
+        return try (self as Array).jsonData(pretty: pretty)
+    }
+    
+    @objc func jsonString(pretty: Bool = false) throws -> String {
+        return try (self as Array).jsonString(pretty: pretty)
     }
 }

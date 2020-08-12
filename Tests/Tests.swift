@@ -28,6 +28,8 @@ class Tests: XCTestCase {
         // This is an example of a performance test case.
         let desc = String(describing: TestViewController.self)
         print(desc)
+        let dic = ["name1": "小王", "name2": "小刘", "name3": "小明"]
+        dic.print()
         do {
             let _ = try [5: 4].jsonData()
             print(" Hello world ".trimmingCharacters(in: .whitespacesAndNewlines))

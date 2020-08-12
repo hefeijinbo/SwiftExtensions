@@ -22,12 +22,45 @@ public extension BinaryFloatingPoint {
         let factor = Self(pow(10.0, Double(max(0, decimalPlaces))))
         return (self * factor).rounded(rule) / factor
     }
+    
+    func roundedString(decimalPlaces: Int, rule: FloatingPointRoundingRule) -> String {
+        if self == 0 {
+            return "0"
+        }
+        if self.isNaN {
+            return "NaN"
+        }
+        let format = NumberFormatter()
+        format.numberStyle = .decimal
+        format.maximumFractionDigits = decimalPlaces
+        guard let number = self.rounded(decimalPlaces: decimalPlaces, rule: rule) as? NSNumber else {
+            return "0"
+        }
+        return format.string(from: number) ?? "0"
+    }
 }
 
 public extension NSNumber {
-    @objc func rounded(decimalPlaces: Int, mode: NSFloatingPointRoundingRule) -> Double {
+    @objc func rounded(decimalPlaces: Int, rule: NSFloatingPointRoundingRule) -> Double {
+        return doubleValue.rounded(decimalPlaces: decimalPlaces, rule: rule.roundingRule)
+    }
+    
+    @objc func roundedString(decimalPlaces: Int, rule: NSFloatingPointRoundingRule) -> String {
+        return doubleValue.roundedString(decimalPlaces: decimalPlaces, rule: rule.roundingRule)
+    }
+}
+
+@objc public enum NSFloatingPointRoundingRule: Int {
+    case toNearestOrAwayFromZero = 0
+    case toNearestOrEven
+    case up
+    case down
+    case towardZero
+    case awayFromZero
+    
+    var roundingRule: FloatingPointRoundingRule {
         let swiftMode: FloatingPointRoundingRule
-        switch mode {
+        switch self {
         case .toNearestOrAwayFromZero:
             swiftMode = .toNearestOrAwayFromZero
         case .toNearestOrEven:
@@ -41,15 +74,6 @@ public extension NSNumber {
         case .awayFromZero:
             swiftMode = .awayFromZero
         }
-        return doubleValue.rounded(decimalPlaces: decimalPlaces, rule: swiftMode)
+        return swiftMode
     }
-}
-
-@objc public enum NSFloatingPointRoundingRule: Int {
-    case toNearestOrAwayFromZero = 0
-    case toNearestOrEven
-    case up
-    case down
-    case towardZero
-    case awayFromZero
 }

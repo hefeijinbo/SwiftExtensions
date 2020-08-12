@@ -9,9 +9,40 @@
 #if canImport(Foundation)
 import Foundation
 
+extension Calendar.Component {
+    static let dateTimeSet: Set<Calendar.Component> = [.year, .month, .day, .month, .hour, .minute, .second, .weekday, .weekdayOrdinal]
+}
+
 public extension Date {
     var calendar: Calendar {
         return Calendar(identifier: .gregorian)
+    }
+    
+    mutating func addDays(_ days: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.day = days
+        guard let newDate = calendar.date(byAdding: dateComponents, to: self) else {
+            return self
+        }
+        self = newDate
+        return newDate
+    }
+    
+    mutating func addMonths(_ months: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.month = months
+        guard let newDate = calendar.date(byAdding: dateComponents, to: self) else {
+            return self
+        }
+        self = newDate
+        return newDate
+    }
+    
+    func isEqualIgnoringTime(date: Date) -> Bool {
+        let calendar = self.calendar
+        let components1 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: self)
+        let components2 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: date)
+        return (components1.year == components2.year) && (components1.month == components2.month) && (components1.day == components2.day)
     }
     
     var era: Int {
@@ -222,6 +253,20 @@ public extension Date {
 }
 
 public extension NSDate {
+    @objc func addDays(_ days: Int) -> Date {
+        var date = (self as Date)
+        return date.addDays(days)
+    }
+    
+    @objc func addMonths(_ months: Int) -> Date {
+        var date = (self as Date)
+        return date.addMonths(months)
+    }
+    
+    @objc func isEqualIgnoringTime(date: Date) -> Bool {
+        return (self as Date).isEqualIgnoringTime(date: date)
+    }
+    
     @objc var era: Int {
         return (self as Date).era
     }
