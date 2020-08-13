@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIImage {
     @objc var bytesSize: Int {
-        return jpegData(compressionQuality: 1)?.count ?? 0
+        return pngData()?.count ?? 0
     }
     
     /// 压缩图片
@@ -127,6 +127,23 @@ public extension UIImage {
         UIRectFill(CGRect(origin: .zero, size: size))
         draw(at: .zero)
         return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+    
+    /// 设置图片透明度
+    func applyAlpha(_ alpha: CGFloat) -> UIImage {
+        UIGraphicsBeginImageContext(size)
+        defer { UIGraphicsEndImageContext() }
+        guard let context = UIGraphicsGetCurrentContext() else { return self}
+        let area = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        context.scaleBy(x: 1, y: -1)
+        context.translateBy(x: 0, y: -area.height)
+        context.setBlendMode(.multiply)
+        context.setAlpha(alpha)
+        context.draw(self.cgImage!, in: area)
+        guard let image = UIGraphicsGetImageFromCurrentImageContext() else {
+            return self
+        }
+        return image
     }
 
     /// 添加圆角

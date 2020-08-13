@@ -38,6 +38,21 @@ public extension Date {
         return newDate
     }
     
+    mutating func addHours(_ hours: Int) -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.hour = hours
+        guard let newDate = calendar.date(byAdding: dateComponents, to: self) else {
+            return self
+        }
+        self = newDate
+        return newDate
+    }
+    
+    var daysInMonth: Int {
+        let range = calendar.range(of: .day, in: .month, for: self)
+        return range?.count ?? 1
+    }
+    
     func isEqualIgnoringTime(date: Date) -> Bool {
         let calendar = self.calendar
         let components1 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: self)

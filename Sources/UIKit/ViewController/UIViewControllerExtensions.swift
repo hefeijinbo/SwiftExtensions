@@ -14,6 +14,15 @@ public extension UIViewController {
         return isViewLoaded && view.window != nil
     }
     
+    /// 关闭ScrollView自动调节insets功能
+    func disableAdjustsScrollviewInsets(_ scrollview: UIScrollView) {
+        if #available(iOS 11.0, *) {
+            scrollview.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+    }
+    
     @objc func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         for childVC in self.children {
             childVC.removeFromParent()

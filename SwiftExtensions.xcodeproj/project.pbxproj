@@ -90,6 +90,8 @@
 		E4AB3A5024E4B60D00CB419C /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E124E2DDEE001BA882 /* UIViewControllerExtensions.swift */; };
 		E4AB3A5124E4B6DA00CB419C /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B1FF24E18ECC001BA882 /* UIFontExtensions.swift */; };
 		E4AB3A5224E4B6DA00CB419C /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B1FF24E18ECC001BA882 /* UIFontExtensions.swift */; };
+		E4AB3A5524E4BEC700CB419C /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */; };
+		E4AB3A5724E4BF3D00CB419C /* UIScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */; };
 		E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
 		E4D103CD24E0408900B8A4B0 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
 		E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
@@ -168,6 +170,8 @@
 		E467470B24E4421C0009A800 /* DispatchQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueTests.swift; sourceTree = "<group>"; };
 		E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTests.swift; sourceTree = "<group>"; };
+		E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
+		E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtensions.swift; sourceTree = "<group>"; };
 		E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperateQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -313,6 +317,8 @@
 			children = (
 				5CD9B5D524E2D77F001BA882 /* UIStoryboardExtensions.swift */,
 				5CD9B1F924E18B11001BA882 /* UIApplicationExtensions.swift */,
+				E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */,
+				E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -617,6 +623,7 @@
 				E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */,
 				5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */,
 				E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */,
+				E4AB3A5524E4BEC700CB419C /* UIDeviceExtensions.swift in Sources */,
 				5CD9B5DE24E2DC3C001BA882 /* UITextFieldExtensions.swift in Sources */,
 				E4DF925024E41F4B00A78C58 /* StringExtensions+Valid.swift in Sources */,
 				5CD9B20224E18FC3001BA882 /* UIImageExtensions.swift in Sources */,
@@ -632,6 +639,7 @@
 				5CD9B1FE24E18E72001BA882 /* UICollectionViewExtensions.swift in Sources */,
 				5C574D6924DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
 				E4AB3A4724E4B08200CB419C /* NSObjectExtensions.swift in Sources */,
+				E4AB3A5724E4BF3D00CB419C /* UIScreenExtensions.swift in Sources */,
 				5CD9B1FC24E18D01001BA882 /* UIButtonExtensions.swift in Sources */,
 				5C574D6124DEAE3C00A59183 /* ArrayExtensions.swift in Sources */,
 				5C574D4924DE775700A59183 /* NSAttributedStringExtensions.swift in Sources */,

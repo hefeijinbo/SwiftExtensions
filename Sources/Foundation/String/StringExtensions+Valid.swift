@@ -36,8 +36,13 @@ public extension String {
     }
     
     var isValidUrl: Bool {
-         return URL(string: self) != nil
-     }
+        return URL(string: self) != nil
+    }
+    
+    /// 身份证
+    var isIdCard: Bool {
+        return NSPredicate(format: "SELF MATCHES %@", "^(\\d{14}|\\d{17})(\\d|[xX])$").evaluate(with: self)
+    }
 }
 
 public extension NSString {
