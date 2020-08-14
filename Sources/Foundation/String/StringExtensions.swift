@@ -133,6 +133,79 @@ public extension String {
     func appendingPathExtension(_ str: String) -> String? {
         return (self as NSString).appendingPathExtension(str)
     }
+    
+    /// 文字转图片
+    func toTextImage(fontSize: CGFloat, textColor: UIColor) -> UIImage? {
+        let imgHeight: CGFloat = 16.0
+        let imgWidth = boundingRectWidth(fontSize: fontSize)
+        let attributeStr = NSAttributedString(string: self, attributes: [.font : fontSize, .foregroundColor: textColor])
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: imgWidth, height: imgHeight), false, UIScreen.main.scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+        context.setCharacterSpacing(10.0)
+        context.setTextDrawingMode(CGTextDrawingMode.fill)
+        context.setFillColor(UIColor.white.cgColor)
+        
+        attributeStr.draw(in: CGRect(x: 0.0, y: 0.0, width: imgWidth, height: imgHeight))
+        
+        let newImg = UIGraphicsGetImageFromCurrentImageContext()
+        
+        return newImg
+    }
+    
+    /// 生成二维码
+    ///
+    /// - Parameters:
+    ///   - centerImg: 中间的小图
+    func createQRCode(centerImg: UIImage?) -> UIImage? {
+        if isEmpty {
+            return nil
+        }
+        guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
+            return nil
+        }
+        filter.setDefaults()
+        filter.setValue(data(using: String.Encoding.utf8, allowLossyConversion: true), forKey: "inputMessage")
+        guard let image = filter.outputImage else {
+            return nil
+        }
+        let size: CGFloat = 300.0
+        let integral: CGRect = image.extent.integral
+        let proportion: CGFloat = min(size/integral.width, size/integral.height)
+        
+        let width = integral.width * proportion
+        let height = integral.height * proportion
+        let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceGray()
+        let bitmapRef = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: 0)!
+        
+        let context = CIContext(options: nil)
+        guard let bitmapImage: CGImage = context.createCGImage(image, from: integral) else {
+            return nil
+        }
+        bitmapRef.interpolationQuality = CGInterpolationQuality.none
+        bitmapRef.scaleBy(x: proportion, y: proportion);
+        bitmapRef.draw(bitmapImage, in: integral);
+        guard let cgImage: CGImage = bitmapRef.makeImage() else {
+            return nil
+        }
+        var qrCodeImage = UIImage(cgImage: cgImage)
+        if let centerImg = centerImg {
+            // 图片拼接
+            UIGraphicsBeginImageContextWithOptions(qrCodeImage.size, false, UIScreen.main.scale)
+            qrCodeImage.draw(in: CGRect(x: 0.0, y: 0.0, width: qrCodeImage.size.width, height: qrCodeImage.size.height))
+            centerImg.draw(in: CGRect(x: (qrCodeImage.size.width - 35.0) / 2.0, y: (qrCodeImage.size.height - 35.0) / 2.0, width: 35.0, height: 35.0))
+            
+            qrCodeImage = UIGraphicsGetImageFromCurrentImageContext() ?? qrCodeImage
+            UIGraphicsEndImageContext()
+            return qrCodeImage
+        } else {
+            return qrCodeImage
+        }
+    }
 }
 
 public extension NSString {
@@ -146,22 +219,30 @@ public extension NSString {
     }
     
     @objc var jsonDic: [String: Any] {
-        return (self as NSString).jsonDic
+        return (self as String).jsonDic
     }
     
     @objc var jsonDicArray: [[String: Any]] {
-        return (self as NSString).jsonDicArray
+        return (self as String).jsonDicArray
     }
     
     @objc var base64Decoded: String? {
-        return (self as NSString).base64Decoded
+        return (self as String).base64Decoded
     }
     
     @objc var base64Encoded: String? {
-        return (self as NSString).base64Encoded
+        return (self as String).base64Encoded
     }
     
     @objc func date(format: String) -> Date? {
-        return (self as NSString).date(format: format)
+        return (self as String).date(format: format)
+    }
+    
+    /// 生成二维码
+      ///
+      /// - Parameters:
+      ///   - centerImg: 中间的小图
+    func createQRCode(centerImg: UIImage?) -> UIImage? {
+        return (self as String).createQRCode(centerImg: centerImg)
     }
 }

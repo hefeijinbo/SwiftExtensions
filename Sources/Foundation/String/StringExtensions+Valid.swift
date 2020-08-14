@@ -35,6 +35,11 @@ public extension String {
         }
     }
     
+    /// 是否是数字
+    var isValidNumber: Bool {
+        return NSPredicate(format: "SELF MATCHES %@", "^[0-9]+$").evaluate(with: self)
+    }
+    
     var isValidUrl: Bool {
         return URL(string: self) != nil
     }
@@ -47,14 +52,19 @@ public extension String {
 
 public extension NSString {
     @objc var isValidPhoneNumber: Bool {
-        return (self as NSString).isValidPhoneNumber
+        return (self as String).isValidPhoneNumber
     }
     
     @objc var isValidEmail: Bool {
-        return (self as NSString).isValidEmail
+        return (self as String).isValidEmail
     }
     
     @objc var isValidUrl: Bool {
-        return (self as NSString).isValidUrl
+        return (self as String).isValidUrl
+    }
+    
+    /// 是否是数字
+    @objc var isValidNumber: Bool {
+        return (self as String).isValidNumber
     }
 }

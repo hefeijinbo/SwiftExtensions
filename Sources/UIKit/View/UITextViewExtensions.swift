@@ -11,7 +11,7 @@ import UIKit
 public extension UITextView {
     @objc func scrollToBottom() {
         // swiftlint:disable:next legacy_constructor
-        let range = NSMakeRange((text as NSString).length - 1, 1)
+        let range = NSMakeRange(text.count - 1, 1)
         scrollRangeToVisible(range)
     }
 

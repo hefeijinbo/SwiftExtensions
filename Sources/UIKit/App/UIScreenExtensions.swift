@@ -2,7 +2,7 @@
 //  UIScreenExtensions.swift
 //  SwiftExtensions
 //
-//  Created by yons on 2020/8/13.
+//  Created by jinbo on 2020/8/13.
 //  Copyright © 2020 SwiftExtensions. All rights reserved.
 //
 

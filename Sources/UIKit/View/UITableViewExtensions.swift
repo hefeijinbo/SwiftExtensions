@@ -9,6 +9,11 @@
 import UIKit
 
 public extension UITableView {
+    /// 隐藏多余的线
+    @objc func hiddeFooterLine() {
+        tableFooterView = UIView()
+    }
+    
     @objc func scrollToBottom(animated: Bool = true) {
         let bottomOffset = CGPoint(x: 0, y: contentSize.height - bounds.size.height)
         setContentOffset(bottomOffset, animated: animated)
