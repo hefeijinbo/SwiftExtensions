@@ -21,6 +21,20 @@ public extension UIApplication {
         case appStore
     }
 
+    /// 使用真机
+    static var isDevice: Bool {
+        #if targetEnvironment(simulator)
+        return false
+        #else
+        return true
+        #endif
+    }
+    
+    /// 使用模拟器
+    static var isSimulator: Bool {
+        return !isDevice
+    }
+    
     @objc var currentEnvironment: Environment {
         #if DEBUG
         return .debug

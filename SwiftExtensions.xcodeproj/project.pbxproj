@@ -92,9 +92,11 @@
 		E4AB3A5224E4B6DA00CB419C /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B1FF24E18ECC001BA882 /* UIFontExtensions.swift */; };
 		E4AB3A5524E4BEC700CB419C /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */; };
 		E4AB3A5724E4BF3D00CB419C /* UIScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */; };
+		E4CAA48224E6E2F5008C38A8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CAA48124E6E2F5008C38A8 /* Log.swift */; };
 		E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
 		E4D103CD24E0408900B8A4B0 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
 		E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
+		E4D6A0D024E74DB90004427B /* Lock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D6A0CF24E74DB90004427B /* Lock.swift */; };
 		E4DB869524DE295F0042F79D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869424DE295F0042F79D /* AppDelegate.swift */; };
 		E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869624DE295F0042F79D /* SceneDelegate.swift */; };
 		E4DB869924DE295F0042F79D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4DB869824DE295F0042F79D /* ViewController.swift */; };
@@ -178,9 +180,11 @@
 		E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTests.swift; sourceTree = "<group>"; };
 		E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtensions.swift; sourceTree = "<group>"; };
+		E4CAA48124E6E2F5008C38A8 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperateQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		E4D6A0CF24E74DB90004427B /* Lock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lock.swift; sourceTree = "<group>"; };
 		E4DB869124DE295F0042F79D /* SwiftExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4DB869424DE295F0042F79D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4DB869624DE295F0042F79D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				5C574D7D24DEDE1600A59183 /* SwiftExtensionsError.swift */,
+				E4CAA48124E6E2F5008C38A8 /* Log.swift */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 			children = (
 				E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */,
 				E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */,
+				E4D6A0CF24E74DB90004427B /* Lock.swift */,
 			);
 			path = Queue;
 			sourceTree = "<group>";
@@ -647,6 +653,7 @@
 				5CD9B5DE24E2DC3C001BA882 /* UITextFieldExtensions.swift in Sources */,
 				E45A859224E6088000F82A79 /* AVPlayer.swift in Sources */,
 				E4DF925024E41F4B00A78C58 /* StringExtensions+Valid.swift in Sources */,
+				E4CAA48224E6E2F5008C38A8 /* Log.swift in Sources */,
 				5CD9B20224E18FC3001BA882 /* UIImageExtensions.swift in Sources */,
 				E46247F224E216B4008AA568 /* UINavigationBarExtensions.swift in Sources */,
 				5C574D7E24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
@@ -657,6 +664,7 @@
 				5C4B948324DFFFFC00500FCE /* SequenceExtensions.swift in Sources */,
 				E448080924E0C65400DB6F81 /* UIAlertControllerExtensions.swift in Sources */,
 				5CD9B5D624E2D77F001BA882 /* UIStoryboardExtensions.swift in Sources */,
+				E4D6A0D024E74DB90004427B /* Lock.swift in Sources */,
 				5CD9B1FE24E18E72001BA882 /* UICollectionViewExtensions.swift in Sources */,
 				5C574D6924DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
 				E4AB3A4724E4B08200CB419C /* NSObjectExtensions.swift in Sources */,

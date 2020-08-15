@@ -73,10 +73,25 @@ public extension UIColor {
         return (red: Int(red * 255.0), green: Int(green * 255.0), blue: Int(blue * 255.0), alpha: Int(alpha * 255.0))
     }
     
-    /// UIColor 的 RGB A 成分数组  (0 和 255之间). [red green blue alpha]
-    @objc var rgbaComponentsArray: [Int] {
+    /// 颜色的红色成分
+    @objc var redComponent: Int {
         let tuple = rgbaComponents
-        return [tuple.red, tuple.green, tuple.blue, tuple.alpha]
+        return tuple.red
+    }
+    
+    @objc var greenComponent: Int {
+        let tuple = rgbaComponents
+        return tuple.green
+    }
+    
+    @objc var blueComponent: Int {
+        let tuple = rgbaComponents
+        return tuple.blue
+    }
+    
+    @objc var alphaComponent: Int {
+        let tuple = rgbaComponents
+        return tuple.alpha
     }
 
     /// hue(色调) saturation(饱和度), brightness(亮度), alpha(透明度).

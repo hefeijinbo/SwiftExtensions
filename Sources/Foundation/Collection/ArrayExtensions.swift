@@ -56,6 +56,39 @@ public extension Array where Element: Equatable {
         }
         return self
     }
+    
+    /// 交集
+    func intersection(_ values: [Element]...) -> Array {
+        var result = self
+        var intersection = Array()
+
+        for (i, value) in values.enumerated() {
+            if i > 0 {
+                result = intersection
+                intersection = Array()
+            }
+
+            value.forEach { (item: Element) -> Void in
+                if result.contains(item) {
+                    intersection.append(item)
+                }
+            }
+        }
+        return intersection
+    }
+    
+    /// 并集
+    func union(_ values: [Element]...) -> Array {
+        var result = self
+        for array in values {
+            for value in array {
+                if !result.contains(value) {
+                    result.append(value)
+                }
+            }
+        }
+        return result
+    }
 }
 
 public extension NSArray {

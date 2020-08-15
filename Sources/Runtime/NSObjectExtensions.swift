@@ -9,8 +9,14 @@
 import UIKit
 
 public extension NSObject {
+    /// 针对 UIViewController 这种特殊情况
     @objc static var stringFromClass: String {
-        return (NSStringFromClass(self).components(separatedBy: ".").last) ?? ""
+        let string = NSStringFromClass(self)
+        if string.contains(".") {
+            return (string.components(separatedBy: ".").last) ?? ""
+        } else {
+            return string
+        }
     }
     
     /// 动态添加属性

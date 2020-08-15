@@ -9,6 +9,16 @@
 import UIKit
 
 public extension UIButton {
+    /// 设置背景颜色
+    @objc func setBackgroundColor(_ color: UIColor, forState: UIControl.State) {
+        UIGraphicsBeginImageContext(CGSize(width: 1, height: 1))
+        UIGraphicsGetCurrentContext()?.setFillColor(color.cgColor)
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: 1, height: 1))
+        let colorImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        self.setBackgroundImage(colorImage, for: forState)
+    }
+    
     /// 居中对齐标题文本和图像
     /// - Parameters:
     ///   - imageAboveText: 设置为true将使图像在标题文本之上，默认为假，图像在文本的左边
