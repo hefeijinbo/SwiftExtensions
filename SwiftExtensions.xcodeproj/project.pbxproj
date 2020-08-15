@@ -92,6 +92,7 @@
 		E4AB3A5224E4B6DA00CB419C /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B1FF24E18ECC001BA882 /* UIFontExtensions.swift */; };
 		E4AB3A5524E4BEC700CB419C /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */; };
 		E4AB3A5724E4BF3D00CB419C /* UIScreenExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */; };
+		E4C05F7424E7BA8F00A1F2DB /* CALayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C05F7324E7BA8F00A1F2DB /* CALayerExtensions.swift */; };
 		E4CAA48224E6E2F5008C38A8 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CAA48124E6E2F5008C38A8 /* Log.swift */; };
 		E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */; };
 		E4D103CD24E0408900B8A4B0 /* OperateQueueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */; };
@@ -180,6 +181,7 @@
 		E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTests.swift; sourceTree = "<group>"; };
 		E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
 		E4AB3A5624E4BF3D00CB419C /* UIScreenExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScreenExtensions.swift; sourceTree = "<group>"; };
+		E4C05F7324E7BA8F00A1F2DB /* CALayerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerExtensions.swift; sourceTree = "<group>"; };
 		E4CAA48124E6E2F5008C38A8 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		E4D103CA24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtensions.swift; sourceTree = "<group>"; };
 		E4D103CC24E0408900B8A4B0 /* OperateQueueExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperateQueueExtensions.swift; sourceTree = "<group>"; };
@@ -336,6 +338,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
+		E4C05F7224E7BA8100A1F2DB /* CoreAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				E4C05F7324E7BA8F00A1F2DB /* CALayerExtensions.swift */,
+			);
+			path = CoreAnimation;
+			sourceTree = "<group>";
+		};
 		E4D103C924E03ED500B8A4B0 /* Queue */ = {
 			isa = PBXGroup;
 			children = (
@@ -417,6 +427,7 @@
 		E4DB86C524DE2AFE0042F79D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E4C05F7224E7BA8100A1F2DB /* CoreAnimation */,
 				E4E413C524E6BD1600C11110 /* Runtime */,
 				E45A859024E6087400F82A79 /* AVFoundation */,
 				E4D103CE24E04D9600B8A4B0 /* UIKit */,
@@ -648,6 +659,7 @@
 				5CD9B5E424E2E026001BA882 /* UIViewExtensions.swift in Sources */,
 				E4DB869724DE295F0042F79D /* SceneDelegate.swift in Sources */,
 				5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */,
+				E4C05F7424E7BA8F00A1F2DB /* CALayerExtensions.swift in Sources */,
 				E4D103D024E04DA700B8A4B0 /* UIColorExtensions.swift in Sources */,
 				E4AB3A5524E4BEC700CB419C /* UIDeviceExtensions.swift in Sources */,
 				5CD9B5DE24E2DC3C001BA882 /* UITextFieldExtensions.swift in Sources */,
