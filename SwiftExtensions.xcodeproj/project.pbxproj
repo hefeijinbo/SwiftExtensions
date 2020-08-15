@@ -83,6 +83,10 @@
 		E46247F024E215FB008AA568 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46247EF24E215FB008AA568 /* UILabelExtensions.swift */; };
 		E46247F224E216B4008AA568 /* UINavigationBarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E46247F124E216B4008AA568 /* UINavigationBarExtensions.swift */; };
 		E467470C24E4421C0009A800 /* DispatchQueueTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E467470B24E4421C0009A800 /* DispatchQueueTests.swift */; };
+		E4AA706D24E7FCD5006E6C21 /* ErrorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA706C24E7FCD5006E6C21 /* ErrorExtensions.swift */; };
+		E4AA706F24E7FF51006E6C21 /* ResultExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA706E24E7FF51006E6C21 /* ResultExtensions.swift */; };
+		E4AA707124E8049B006E6C21 /* UIImageExtensions+Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA707024E8049B006E6C21 /* UIImageExtensions+Create.swift */; };
+		E4AA707424E80AB8006E6C21 /* UIImageExtensions+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AA707324E80AB8006E6C21 /* UIImageExtensions+Size.swift */; };
 		E4AB3A4724E4B08200CB419C /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */; };
 		E4AB3A4824E4B08500CB419C /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */; };
 		E4AB3A4B24E4B0C900CB419C /* NSObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */; };
@@ -177,6 +181,10 @@
 		E46247EF24E215FB008AA568 /* UILabelExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		E46247F124E216B4008AA568 /* UINavigationBarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBarExtensions.swift; sourceTree = "<group>"; };
 		E467470B24E4421C0009A800 /* DispatchQueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueTests.swift; sourceTree = "<group>"; };
+		E4AA706C24E7FCD5006E6C21 /* ErrorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorExtensions.swift; sourceTree = "<group>"; };
+		E4AA706E24E7FF51006E6C21 /* ResultExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultExtensions.swift; sourceTree = "<group>"; };
+		E4AA707024E8049B006E6C21 /* UIImageExtensions+Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageExtensions+Create.swift"; sourceTree = "<group>"; };
+		E4AA707324E80AB8006E6C21 /* UIImageExtensions+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageExtensions+Size.swift"; sourceTree = "<group>"; };
 		E4AB3A4624E4B08200CB419C /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		E4AB3A4A24E4B0C900CB419C /* NSObjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectTests.swift; sourceTree = "<group>"; };
 		E4AB3A5424E4BEC700CB419C /* UIDeviceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtensions.swift; sourceTree = "<group>"; };
@@ -286,10 +294,28 @@
 			path = AVFoundation;
 			sourceTree = "<group>";
 		};
-		E4AB3A4C24E4B57B00CB419C /* Display */ = {
+		E4AA706B24E7FCC5006E6C21 /* BaseValue */ = {
+			isa = PBXGroup;
+			children = (
+				E4AA706C24E7FCD5006E6C21 /* ErrorExtensions.swift */,
+				E4AA706E24E7FF51006E6C21 /* ResultExtensions.swift */,
+			);
+			path = BaseValue;
+			sourceTree = "<group>";
+		};
+		E4AA707224E80A4A006E6C21 /* UIImage */ = {
 			isa = PBXGroup;
 			children = (
 				5CD9B20124E18FC3001BA882 /* UIImageExtensions.swift */,
+				E4AA707024E8049B006E6C21 /* UIImageExtensions+Create.swift */,
+				E4AA707324E80AB8006E6C21 /* UIImageExtensions+Size.swift */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
+		E4AB3A4C24E4B57B00CB419C /* Display */ = {
+			isa = PBXGroup;
+			children = (
 				5CD9B1FF24E18ECC001BA882 /* UIFontExtensions.swift */,
 				E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */,
 			);
@@ -359,6 +385,7 @@
 		E4D103CE24E04D9600B8A4B0 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				E4AA707224E80A4A006E6C21 /* UIImage */,
 				E4AB3A4D24E4B5CF00CB419C /* View */,
 				E4AB3A4E24E4B5CF00CB419C /* ViewController */,
 				E4AB3A4C24E4B57B00CB419C /* Display */,
@@ -442,6 +469,7 @@
 		E4DB86C624DE2D190042F79D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				E4AA706B24E7FCC5006E6C21 /* BaseValue */,
 				5C574D4524DE5D8D00A59183 /* Data */,
 				E4DB86C724DE2D190042F79D /* Number */,
 				E4DB86C924DE2D190042F79D /* String */,
@@ -638,17 +666,21 @@
 				5C574D7124DEC43800A59183 /* CollectionExtensions.swift in Sources */,
 				5C574D7524DED74B00A59183 /* DictionaryExtensions.swift in Sources */,
 				5CD9B5DC24E2DAFC001BA882 /* UITableViewExtensions.swift in Sources */,
+				E4AA707424E80AB8006E6C21 /* UIImageExtensions+Size.swift in Sources */,
 				5C574D5824DEA25400A59183 /* URLRequestExtensions.swift in Sources */,
 				E4E413C724E6BD4300C11110 /* RuntimeExtensions.swift in Sources */,
 				5CD9C68B24E42C78001BA882 /* BinaryIntegerExtensions.swift in Sources */,
+				E4AA706D24E7FCD5006E6C21 /* ErrorExtensions.swift in Sources */,
 				5C574D6D24DEBB6400A59183 /* CharacterExtensions.swift in Sources */,
 				E46247F024E215FB008AA568 /* UILabelExtensions.swift in Sources */,
 				E4DB869924DE295F0042F79D /* ViewController.swift in Sources */,
 				E4DB86CF24DE2E1F0042F79D /* DateExtensions.swift in Sources */,
 				5CD9B5D224E2D6B7001BA882 /* UISegmentedControlExtensions.swift in Sources */,
 				E4DB869524DE295F0042F79D /* AppDelegate.swift in Sources */,
+				E4AA706F24E7FF51006E6C21 /* ResultExtensions.swift in Sources */,
 				5C758E4D24DF9783007BCE17 /* DecodableExtensions.swift in Sources */,
 				5C4B948B24E0074800500FCE /* SignedNumericExtensions.swift in Sources */,
+				E4AA707124E8049B006E6C21 /* UIImageExtensions+Create.swift in Sources */,
 				5CD9B5D024E2D628001BA882 /* UISearchBarExtensions.swift in Sources */,
 				5C574D4724DE5D9600A59183 /* DataExtensions.swift in Sources */,
 				5CD9B1FA24E18B11001BA882 /* UIApplicationExtensions.swift in Sources */,

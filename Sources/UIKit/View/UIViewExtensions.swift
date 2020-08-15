@@ -9,6 +9,18 @@
 import UIKit
 
 public extension UIView {
+    /// 获取界面所属的 UIViewController
+    @objc var viewController: UIViewController? {
+        var parent: UIResponder? = self
+        while parent != nil {
+            parent = parent?.next
+            if let viewController = parent as? UIViewController {
+                return viewController
+            }
+        }
+        return nil
+    }
+    
     @objc func addGradientLayer(startColor: UIColor,
                                 endColor: UIColor,
                                 startPoint: CGPoint = CGPoint(x: 0, y: 0),

@@ -9,7 +9,7 @@
 import UIKit
 
 public extension CALayer {
-    var snapshotImage: UIImage? {
+    @objc var snapshotImage: UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
         defer {
             UIGraphicsEndImageContext()

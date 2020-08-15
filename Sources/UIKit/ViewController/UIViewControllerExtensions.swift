@@ -33,6 +33,12 @@ public extension UIViewController {
         child.didMove(toParent: self)
     }
     
+    @objc func remove() {
+        willMove(toParent: nil)
+        view.removeFromSuperview()
+        removeFromParent()
+    }
+    
     /// 以弹出窗口(popover)的形式呈现UIViewController。
     ///
     /// - Parameters:

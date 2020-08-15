@@ -9,6 +9,25 @@
 import UIKit
 
 public extension UITableView {
+    @objc func tableHeaderViewSizeToFit() {
+        tableHeaderOrFooterViewSizeToFit(\.tableHeaderView)
+    }
+
+    @objc func tableFooterViewSizeToFit() {
+        tableHeaderOrFooterViewSizeToFit(\.tableFooterView)
+    }
+
+    private func tableHeaderOrFooterViewSizeToFit(_ keyPath: ReferenceWritableKeyPath<UITableView, UIView?>) {
+        guard let headerOrFooterView = self[keyPath: keyPath] else { return }
+        let height = headerOrFooterView
+            .systemLayoutSizeFitting(CGSize(width: frame.width, height: 0),
+                                     withHorizontalFittingPriority: .required,
+                                     verticalFittingPriority: .fittingSizeLevel).height
+        guard headerOrFooterView.frame.height != height else { return }
+        headerOrFooterView.frame.size.height = height
+        self[keyPath: keyPath] = headerOrFooterView
+    }
+    
     /// 隐藏多余的线
     @objc func hiddeFooterLine() {
         tableFooterView = UIView()
