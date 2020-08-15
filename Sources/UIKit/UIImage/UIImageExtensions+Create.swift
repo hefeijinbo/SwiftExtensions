@@ -31,7 +31,7 @@ public extension UIImage {
     ///   - text: 文本.
     ///   - font: 字体.
     ///   - imageSize: 图片大小.
-    convenience init?(text: String, font: UIFont, imageSize: CGSize) {
+    @objc convenience init?(text: String, font: UIFont, imageSize: CGSize) {
         UIGraphicsBeginImageContextWithOptions(imageSize, false, UIScreen.main.scale)
         
         text.draw(at: CGPoint(x: 0.0, y: 0.0), withAttributes: [.font: font])
@@ -53,7 +53,7 @@ public extension UIImage {
     ///   - font: 文本字体
     ///   - imageSize: 图片大小
     ///   - backgroundColor: 背景颜色
-    convenience init?(maskedText: String, font: UIFont, imageSize: CGSize, backgroundColor: UIColor) {
+    @objc convenience init?(maskedText: String, font: UIFont, imageSize: CGSize, backgroundColor: UIColor) {
         let textAttributes = [NSAttributedString.Key.font: font]
         let textSize = maskedText.size(withAttributes: textAttributes)
         UIGraphicsBeginImageContextWithOptions(imageSize, false, UIScreen.main.scale)

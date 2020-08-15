@@ -35,4 +35,13 @@ public extension UIImageView {
         addSubview(blurEffectView)
         clipsToBounds = true
     }
+    
+    /// 用一个UIImage遮罩当前的UIImageView。
+    @objc func mask(image: UIImage) {
+        let mask = CALayer()
+        mask.contents = image.cgImage
+        mask.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.height)
+        layer.mask = mask
+        layer.masksToBounds = false
+    }
 }
