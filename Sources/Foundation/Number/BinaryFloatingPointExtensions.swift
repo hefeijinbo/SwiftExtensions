@@ -8,55 +8,14 @@
 
 import Foundation
 
-public extension BinaryFloatingPoint {
-    /// 使用指定的小数位数和四舍五入规则返回一个四舍五入值。如果“decimalPlaces”是负数，则使用“0”。
-    ///
-    ///     let num = 3.1415927
-    ///     num.rounded(decimalPlaces: 3, rule: .up) -> 3.142
-    ///     num.rounded(decimalPlaces: 3, rule: .down) -> 3.141
-    ///     num.rounded(decimalPlaces: 2, rule: .awayFromZero) -> 3.15
-    ///     num.rounded(decimalPlaces: 4, rule: .towardZero) -> 3.1415
-    ///     num.rounded(decimalPlaces: -1, rule: .toNearestOrEven) -> 3
-    ///
-    func rounded(decimalPlaces: Int, rule: FloatingPointRoundingRule) -> Self {
-        let factor = Self(pow(10.0, Double(max(0, decimalPlaces))))
-        return (self * factor).rounded(rule) / factor
-    }
-    
-    func roundedString(decimalPlaces: Int, rule: FloatingPointRoundingRule) -> String {
-        if self == 0 {
-            return "0"
-        }
-        if self.isNaN {
-            return "NaN"
-        }
-        let format = NumberFormatter()
-        format.numberStyle = .decimal
-        format.maximumFractionDigits = decimalPlaces
-        guard let number = self.rounded(decimalPlaces: decimalPlaces, rule: rule) as? NSNumber else {
-            return "0"
-        }
-        return format.string(from: number) ?? "0"
-    }
-}
-
-public extension NSNumber {
-    @objc func rounded(decimalPlaces: Int, rule: NSFloatingPointRoundingRule) -> Double {
-        return doubleValue.rounded(decimalPlaces: decimalPlaces, rule: rule.roundingRule)
-    }
-    
-    @objc func roundedString(decimalPlaces: Int, rule: NSFloatingPointRoundingRule) -> String {
-        return doubleValue.roundedString(decimalPlaces: decimalPlaces, rule: rule.roundingRule)
-    }
-}
-
-@objc public enum NSFloatingPointRoundingRule: Int {
-    case toNearestOrAwayFromZero = 0
-    case toNearestOrEven
-    case upRule
-    case down
-    case towardZero
-    case awayFromZero
+/// 舍入规则
+@objc public enum NumberRoundingRule: Int {
+    case toNearestOrAwayFromZero = 0 // 标准教科书式四舍五入
+    case toNearestOrEven // 银行家算法 四舍六入五取偶 五后非零就进一
+    case upRule // 向上取整
+    case down // 向下取整
+    case towardZero // 接近0取整(截断truncate )
+    case awayFromZero // 远离0取整
     
     var roundingRule: FloatingPointRoundingRule {
         let swiftMode: FloatingPointRoundingRule
@@ -75,5 +34,40 @@ public extension NSNumber {
             swiftMode = .awayFromZero
         }
         return swiftMode
+    }
+}
+
+public extension BinaryFloatingPoint {
+    /// 使用指定的舍入位置和舍入规则返回值。
+    ///
+    ///     let num = 3.1415927
+    ///     num.rounded(decimalPlaces: 3, rule: .upRule) -> 3.142
+    ///     num.rounded(decimalPlaces: 3, rule: .down) -> 3.141
+    ///     num.rounded(decimalPlaces: 2, rule: .awayFromZero) -> 3.15
+    ///     num.rounded(decimalPlaces: 4, rule: .towardZero) -> 3.1415
+    ///     num.rounded(decimalPlaces: -1, rule: .toNearestOrEven) -> 3
+    ///
+    /// - Parameters:
+    ///   - decimalPlaces: 舍入位置
+    ///   - rule: 舍入规则
+    func rounded(decimalPlaces: Int, rule: NumberRoundingRule) -> Self {
+        let factor = Self(pow(10.0, Double(max(0, decimalPlaces))))
+        return (self * factor).rounded(rule.roundingRule) / factor
+    }
+    
+    func roundedString(decimalPlaces: Int, rule: NumberRoundingRule) -> String {
+        if self == 0 {
+            return "0"
+        }
+        if self.isNaN {
+            return "NaN"
+        }
+        let format = NumberFormatter()
+        format.numberStyle = .decimal
+        format.maximumFractionDigits = decimalPlaces
+        guard let number = self.rounded(decimalPlaces: decimalPlaces, rule: rule) as? NSNumber else {
+            return "0"
+        }
+        return format.string(from: number) ?? "0"
     }
 }

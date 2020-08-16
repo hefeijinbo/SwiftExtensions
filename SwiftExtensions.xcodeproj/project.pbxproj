@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C08286424E953E700C612F7 /* DecodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C08286324E953E600C612F7 /* DecodableExtensions.swift */; };
+		5C3B401A24E96A8B00AC21D6 /* NSNumberExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3B401924E96A8B00AC21D6 /* NSNumberExtensions.swift */; };
 		5C4B948324DFFFFC00500FCE /* SequenceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */; };
 		5C4B948724E002C900500FCE /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948624E002C900500FCE /* StringExtensions.swift */; };
 		5C4B948B24E0074800500FCE /* SignedNumericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */; };
@@ -143,6 +144,7 @@
 
 /* Begin PBXFileReference section */
 		5C08286324E953E600C612F7 /* DecodableExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodableExtensions.swift; sourceTree = "<group>"; };
+		5C3B401924E96A8B00AC21D6 /* NSNumberExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNumberExtensions.swift; sourceTree = "<group>"; };
 		5C4B948224DFFFFC00500FCE /* SequenceExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SequenceExtensions.swift; sourceTree = "<group>"; };
 		5C4B948624E002C900500FCE /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignedNumericExtensions.swift; sourceTree = "<group>"; };
@@ -503,6 +505,7 @@
 		E4DB86C724DE2D190042F79D /* Number */ = {
 			isa = PBXGroup;
 			children = (
+				5C3B401924E96A8B00AC21D6 /* NSNumberExtensions.swift */,
 				5C574D6824DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift */,
 				5C4B948A24E0074800500FCE /* SignedNumericExtensions.swift */,
 				5CD9C68A24E42C78001BA882 /* BinaryIntegerExtensions.swift */,
@@ -703,6 +706,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C574D5424DE9E1100A59183 /* URLExtensions.swift in Sources */,
+				5C3B401A24E96A8B00AC21D6 /* NSNumberExtensions.swift in Sources */,
 				E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */,
 				5CD9B20024E18ECC001BA882 /* UIFontExtensions.swift in Sources */,
 				5C574D7124DEC43800A59183 /* CollectionExtensions.swift in Sources */,

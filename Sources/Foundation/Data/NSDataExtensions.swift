@@ -30,6 +30,7 @@ public extension NSData {
         return try (self as Data).jsonSerializationObject()
     }
 
+    /// 字节数组
     @objc var byteArray: [UInt8] {
         return (self as Data).byteArray
     }

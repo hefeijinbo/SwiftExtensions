@@ -9,29 +9,15 @@
 import Foundation
 
 public extension SignedNumeric {
+    /// $1,234.57  1 234,57 €
     var currencyString: String {
         let number = self as? NSNumber ?? NSNumber()
         return number.currencyString
     }
     
+    /// 1,234.5678
     var decimalString: String {
         let number = self as? NSNumber ?? NSNumber()
         return number.decimalString
-    }
-}
-
-public extension NSNumber {
-    @objc var currencyString: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.locale = Locale.current
-        return formatter.string(from: self) ?? ""
-    }
-    
-    /// 1000_0000.000
-    @objc var decimalString: String {
-        let format = NumberFormatter()
-        format.numberStyle = .decimal
-        return format.string(from: self) ?? "0"
     }
 }
