@@ -9,6 +9,8 @@
 import UIKit
 
 public extension Error {
+    /// 错误码
     var code: Int { return (self as NSError).code }
+    /// 错误域名
     var domain: String { return (self as NSError).domain }
 }

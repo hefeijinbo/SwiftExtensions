@@ -10,8 +10,9 @@ import Foundation
 
 public extension Decodable {
     /// data 解析成 Decodable 模型
-    init?(data: Data, using decoder: JSONDecoder = .init()) {
-        guard let parsed = try? decoder.decode(Self.self, from: data) else { return nil }
+    init?(jsonEncodeData: Data) {
+        let decoder = JSONDecoder()
+        guard let parsed = try? decoder.decode(Self.self, from: jsonEncodeData) else { return nil }
         self = parsed
     }
 }

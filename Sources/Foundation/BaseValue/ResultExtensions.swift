@@ -10,7 +10,7 @@ import UIKit
 
 public extension Result {
     /// 返回 failure 值
-    var error: Failure? {
+    var failure: Failure? {
         switch self {
         case .success: return nil
         case .failure(let error): return error

@@ -6,7 +6,6 @@
 //  Copyright © 2020 SwiftExtensions. All rights reserved.
 //
 
-#if canImport(Foundation)
 import Foundation
 
 extension Calendar.Component {
@@ -394,4 +393,3 @@ public extension NSDate {
         return Date.is12HourTimeFormat
     }
 }
-#endif

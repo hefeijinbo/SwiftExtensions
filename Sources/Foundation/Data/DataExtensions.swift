@@ -6,14 +6,9 @@
 //  Copyright © 2020 SwiftExtensions. All rights reserved.
 //
 
-#if canImport(Foundation)
 import Foundation
 
 public extension Data {
-    var byteArray: [UInt8] {
-        return [UInt8](self)
-    }
-    
     func subdata(from index: Int) -> Data {
         if index >= count {
             return Data()
@@ -26,13 +21,16 @@ public extension Data {
             return Data()
         }
         if index > count {
-            return Data()
+            return self
         }
         return subdata(in: 0..<index)
     }
     
     func subdata(location: Int, length: Int) -> Data {
         if length == 0 {
+            return Data()
+        }
+        if location >= count {
             return Data()
         }
         var lastIndex = location + length
@@ -42,43 +40,24 @@ public extension Data {
         return self.subdata(in: location..<lastIndex)
     }
     
-    func string(encoding: String.Encoding = .utf8) -> String {
-        let str = String(data: self, encoding: .utf8) ?? String()
-        if !str.contains("\0") {
-            return str
-        }
-        return str.replacingOccurrences(of: "\0", with: "")
+    var utf8String: String? {
+        return String(data: self, encoding: .utf8)
     }
     
-    func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
-        return try JSONSerialization.jsonObject(with: self, options: options)
+    /// 使用 JSONSerialization 解析出 Cocoa 类型
+    func jsonSerializationObject() throws -> Any {
+        return try JSONSerialization.jsonObject(with: self, options: [.allowFragments])
+    }
+    
+    /// 使用 JSONDecoder 解析出对象类型
+    func jsonDecodeObject<T: Decodable>(classType: T.Type) throws -> T {
+        let decoder = JSONDecoder()
+        let obj = try decoder.decode(T.self, from: self)
+        return obj
+    }
+    
+    /// 字节数组
+    var byteArray: [UInt8] {
+        return [UInt8](self)
     }
 }
-
-public extension NSData {
-    @objc func subdata(from index: Int) -> Data {
-        return (self as Data).subdata(from: index)
-    }
-    
-    @objc func subdata(to index: Int) -> Data {
-        return (self as Data).subdata(to: index)
-    }
-    
-    @objc func subdata(location: Int, length: Int) -> Data {
-        return (self as NSData).subdata(location: location, length: length)
-    }
-    
-    @objc var byteArray: [UInt8] {
-        return (self as Data).byteArray
-    }
-    
-    @objc func utf8tring() -> String {
-        return (self as Data).string(encoding: .utf8)
-    }
-    
-    @objc func jsonObject(options: JSONSerialization.ReadingOptions = []) throws -> Any {
-        return try (self as Data).jsonObject(options: options)
-    }
-}
-
-#endif

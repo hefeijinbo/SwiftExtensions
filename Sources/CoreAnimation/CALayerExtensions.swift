@@ -9,6 +9,7 @@
 import UIKit
 
 public extension CALayer {
+    /// 获取快照图片
     @objc var snapshotImage: UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0)
         defer {
