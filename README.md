@@ -24,6 +24,6 @@ SwiftExtensions: 常用的 Swift、Objective-C 和 iOS 扩展
 ### CocoaPods
 
 ```ruby
-pod 'NiceSwiftExtensions', '~> 1.0'
+pod 'NiceSwiftExtensions'
 ```
 
