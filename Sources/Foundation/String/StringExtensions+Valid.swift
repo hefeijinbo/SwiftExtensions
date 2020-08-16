@@ -14,7 +14,7 @@ public extension String {
             return false
         }
         let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"
-        let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        let regexMobile = NSPredicate(format: "SELF MATCHES %@", mobile)
         if regexMobile.evaluate(with: self) == true {
             return true
         } else {
@@ -27,7 +27,7 @@ public extension String {
             return false
         }
         let mobile = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-        let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
+        let regexMobile = NSPredicate(format: "SELF MATCHES %@", mobile)
         if regexMobile.evaluate(with: self) == true {
             return true
         } else {

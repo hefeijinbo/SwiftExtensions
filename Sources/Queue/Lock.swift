@@ -8,7 +8,7 @@
 
 import UIKit
 
-public func synchronized(lock: AnyObject, work: () -> ()) {
+public func synchronized(lock: AnyObject, work: () -> Void) {
     objc_sync_enter(lock)
     work()
     objc_sync_exit(lock)

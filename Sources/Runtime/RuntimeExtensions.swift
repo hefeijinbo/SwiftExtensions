@@ -58,8 +58,12 @@ public func printClassMethods(_ cls: AnyClass) {
 public func swizzleInstanceMethod(for cls: AnyClass, original: Selector, override: Selector) {
     guard let originalMethod = class_getInstanceMethod(cls, original) else { return }
     guard let overrideMethod = class_getInstanceMethod(cls, override) else { return }
-    if class_addMethod(cls, original, method_getImplementation(overrideMethod), method_getTypeEncoding(overrideMethod)) {
-        class_replaceMethod(cls, override, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+    if class_addMethod(cls, original,
+                       method_getImplementation(overrideMethod),
+                       method_getTypeEncoding(overrideMethod)) {
+        class_replaceMethod(cls, override,
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod))
     } else {
         method_exchangeImplementations(originalMethod, overrideMethod)
     }
@@ -74,7 +78,7 @@ public func swizzleClassMethod(for cls: AnyClass, original: Selector, override: 
         cls,
         original,
         method_getImplementation(overrideMethod),
-        method_getTypeEncoding(overrideMethod)){
+        method_getTypeEncoding(overrideMethod)) {
         class_replaceMethod(
             cls,
             override,

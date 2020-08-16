@@ -32,7 +32,7 @@ class Tests: XCTestCase {
 
         dic.print()
         do {
-            let _ = try [5: 4].jsonData()
+            _ = try [5: 4].jsonData()
             print(" Hello world ".trimmingCharacters(in: .whitespacesAndNewlines))
         } catch let error {
             print(error)

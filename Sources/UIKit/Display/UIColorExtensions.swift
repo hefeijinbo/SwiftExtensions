@@ -129,7 +129,8 @@ public extension UIColor {
         let convertColorToRGBSpace: ((_ color: UIColor) -> UIColor?) = { color -> UIColor? in
             if self.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {
                 let oldComponents = self.cgColor.components
-                let components: [CGFloat] = [ oldComponents![0], oldComponents![0], oldComponents![0], oldComponents![1]]
+                let components: [CGFloat] = [oldComponents![0], oldComponents![0],
+                                             oldComponents![0], oldComponents![1]]
                 let colorRef = CGColor(colorSpace: colorSpaceRGB, components: components)
                 let colorOut = UIColor(cgColor: colorRef!)
                 return colorOut

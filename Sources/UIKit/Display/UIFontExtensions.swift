@@ -9,40 +9,40 @@
 import UIKit
 
 public enum FontType: String {
-    case None = ""
-    case Regular = "Regular"
-    case Bold = "Bold"
-    case DemiBold = "DemiBold"
-    case Light = "Light"
-    case UltraLight = "UltraLight"
-    case Italic = "Italic"
-    case Thin = "Thin"
-    case Book = "Book"
-    case Roman = "Roman"
-    case Medium = "Medium"
-    case MediumItalic = "MediumItalic"
-    case CondensedMedium = "CondensedMedium"
-    case CondensedExtraBold = "CondensedExtraBold"
-    case SemiBold = "SemiBold"
-    case BoldItalic = "BoldItalic"
-    case Heavy = "Heavy"
+    case none = ""
+    case regular = "Regular"
+    case bold = "Bold"
+    case demiBold = "DemiBold"
+    case light = "Light"
+    case ultraLight = "UltraLight"
+    case italic = "Italic"
+    case thin = "Thin"
+    case book = "Book"
+    case roman = "Roman"
+    case medium = "Medium"
+    case mediumItalic = "MediumItalic"
+    case condensedMedium = "CondensedMedium"
+    case condensedExtraBold = "CondensedExtraBold"
+    case semiBold = "SemiBold"
+    case boldItalic = "BoldItalic"
+    case heavy = "Heavy"
 }
 
 /// EZSwiftExtensions
 public enum FontName: String {
-    case HelveticaNeue
-    case Helvetica
-    case Futura
-    case Menlo
-    case Avenir
-    case AvenirNext
-    case Didot
-    case AmericanTypewriter
-    case Baskerville
-    case Geneva
-    case GillSans
-    case SanFranciscoDisplay
-    case Seravek
+    case helveticaNeue
+    case helvetica
+    case futura
+    case menlo
+    case avenir
+    case avenirNext
+    case didot
+    case americanTypewriter
+    case baskerville
+    case geneva
+    case gillSans
+    case sanFranciscoDisplay
+    case seravek
 }
 
 public extension UIFont {

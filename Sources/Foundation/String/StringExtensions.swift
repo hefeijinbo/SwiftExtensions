@@ -11,16 +11,16 @@ import CommonCrypto
 
 public extension String {
     var MD5CryptoString: String {
-        let cStrl = cString(using: String.Encoding.utf8);
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16);
-        CC_MD5(cStrl, UInt32(strlen(cStrl!)), buffer);
-        var string = "";
+        let cStrl = cString(using: String.Encoding.utf8)
+        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16)
+        CC_MD5(cStrl, UInt32(strlen(cStrl!)), buffer)
+        var string = ""
         for idx in 0...15 {
-            let obcStrl = String.init(format: "%02x", buffer[idx]);
-            string.append(obcStrl);
+            let obcStrl = String.init(format: "%02x", buffer[idx])
+            string.append(obcStrl)
         }
-        free(buffer);
-        return string;
+        free(buffer)
+        return string
     }
     
     func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
@@ -138,7 +138,7 @@ public extension String {
     func toTextImage(fontSize: CGFloat, textColor: UIColor) -> UIImage? {
         let imgHeight: CGFloat = 16.0
         let imgWidth = boundingRectWidth(fontSize: fontSize)
-        let attributeStr = NSAttributedString(string: self, attributes: [.font : fontSize, .foregroundColor: textColor])
+        let attributeStr = NSAttributedString(string: self, attributes: [.font: fontSize, .foregroundColor: textColor])
         UIGraphicsBeginImageContextWithOptions(CGSize(width: imgWidth, height: imgHeight), false, UIScreen.main.scale)
         defer {
             UIGraphicsEndImageContext()
@@ -180,15 +180,17 @@ public extension String {
         let width = integral.width * proportion
         let height = integral.height * proportion
         let colorSpace: CGColorSpace = CGColorSpaceCreateDeviceGray()
-        let bitmapRef = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: 0)!
+        let bitmapRef = CGContext(data: nil, width: Int(width), height: Int(height),
+                                  bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace,
+                                  bitmapInfo: 0)!
         
         let context = CIContext(options: nil)
         guard let bitmapImage: CGImage = context.createCGImage(image, from: integral) else {
             return nil
         }
         bitmapRef.interpolationQuality = CGInterpolationQuality.none
-        bitmapRef.scaleBy(x: proportion, y: proportion);
-        bitmapRef.draw(bitmapImage, in: integral);
+        bitmapRef.scaleBy(x: proportion, y: proportion)
+        bitmapRef.draw(bitmapImage, in: integral)
         guard let cgImage: CGImage = bitmapRef.makeImage() else {
             return nil
         }
@@ -197,7 +199,9 @@ public extension String {
             // 图片拼接
             UIGraphicsBeginImageContextWithOptions(qrCodeImage.size, false, UIScreen.main.scale)
             qrCodeImage.draw(in: CGRect(x: 0.0, y: 0.0, width: qrCodeImage.size.width, height: qrCodeImage.size.height))
-            centerImg.draw(in: CGRect(x: (qrCodeImage.size.width - 35.0) / 2.0, y: (qrCodeImage.size.height - 35.0) / 2.0, width: 35.0, height: 35.0))
+            centerImg.draw(in: CGRect(x: (qrCodeImage.size.width - 35.0) / 2.0,
+                                      y: (qrCodeImage.size.height - 35.0) / 2.0,
+                                      width: 35.0, height: 35.0))
             
             qrCodeImage = UIGraphicsGetImageFromCurrentImageContext() ?? qrCodeImage
             UIGraphicsEndImageContext()
@@ -215,7 +219,9 @@ public extension NSString {
     
     /// 计算显示宽度
     @objc func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
-        return boundingRect(with: CGSize(width: CGFloat.infinity, height: 40), attributes: [.font: UIFont.systemFont(ofSize: fontSize)], context: nil).width
+        return boundingRect(with: CGSize(width: CGFloat.infinity, height: 40),
+                            attributes: [.font: UIFont.systemFont(ofSize: fontSize)],
+                            context: nil).width
     }
     
     @objc var jsonDic: [String: Any] {

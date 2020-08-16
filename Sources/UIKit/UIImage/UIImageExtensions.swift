@@ -169,7 +169,8 @@ public extension UIImage {
             filter.setValue(value, forKey: key)
         }
         
-        guard let outputImage = filter.outputImage, let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else {
+        guard let outputImage = filter.outputImage,
+            let cgImage = context.createCGImage(outputImage, from: outputImage.extent) else {
             return self
         }
         
@@ -185,7 +186,10 @@ public extension UIImage {
     ///   - tintColor: 模糊tint color，默认为nil。
     ///   - maskImage: 应用一个蒙版图像，如果你不想蒙版，保留默认值(nil)。
     /// - Returns: 返回转换后的图像。
-    func blur(radius blurRadius: CGFloat, saturation: CGFloat = 1.8, tintColor: UIColor? = nil, maskImage: UIImage? = nil) -> UIImage {
+    @objc func blur(radius blurRadius: CGFloat,
+                    saturation: CGFloat = 1.8,
+                    tintColor: UIColor? = nil,
+                    maskImage: UIImage? = nil) -> UIImage {
         guard size.width > 1 && size.height > 1, let selfCGImage = cgImage else {
             return self
         }
@@ -207,14 +211,19 @@ public extension UIImage {
             effectInContext.scaleBy(x: 1, y: -1)
             effectInContext.translateBy(x: 0, y: -size.height)
             effectInContext.draw(selfCGImage, in: imageRect)
-            var effectInBuffer = vImage_Buffer(data: effectInContext.data, height: UInt(effectInContext.height), width: UInt(effectInContext.width), rowBytes: effectInContext.bytesPerRow)
-            
+            var effectInBuffer = vImage_Buffer(data: effectInContext.data,
+                                               height: UInt(effectInContext.height),
+                                               width: UInt(effectInContext.width),
+                                               rowBytes: effectInContext.bytesPerRow)
             UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
             guard let effectOutContext = UIGraphicsGetCurrentContext() else {
                 UIGraphicsEndImageContext()
                 return self
             }
-            var effectOutBuffer = vImage_Buffer(data: effectOutContext.data, height: UInt(effectOutContext.height), width: UInt(effectOutContext.width), rowBytes: effectOutContext.bytesPerRow)
+            var effectOutBuffer = vImage_Buffer(data: effectOutContext.data,
+                                                height: UInt(effectOutContext.height),
+                                                width: UInt(effectOutContext.width),
+                                                rowBytes: effectOutContext.bytesPerRow)
             
             if hasBlur {
                 var inputRadius = blurRadius * UIScreen.main.scale
@@ -226,9 +235,12 @@ public extension UIImage {
                 }
                 
                 let imageEdgeExtendFlags = vImage_Flags(kvImageEdgeExtend)
-                vImageBoxConvolve_ARGB8888(&effectInBuffer, &effectOutBuffer, nil, 0, 0, radius, radius, nil, imageEdgeExtendFlags)
-                vImageBoxConvolve_ARGB8888(&effectOutBuffer, &effectInBuffer, nil, 0, 0, radius, radius, nil, imageEdgeExtendFlags)
-                vImageBoxConvolve_ARGB8888(&effectInBuffer, &effectOutBuffer, nil, 0, 0, radius, radius, nil, imageEdgeExtendFlags)
+                vImageBoxConvolve_ARGB8888(&effectInBuffer, &effectOutBuffer, nil,
+                                           0, 0, radius, radius, nil, imageEdgeExtendFlags)
+                vImageBoxConvolve_ARGB8888(&effectOutBuffer, &effectInBuffer, nil,
+                                           0, 0, radius, radius, nil, imageEdgeExtendFlags)
+                vImageBoxConvolve_ARGB8888(&effectInBuffer, &effectOutBuffer, nil,
+                                           0, 0, radius, radius, nil, imageEdgeExtendFlags)
             }
             
             if hasSaturationChange {
@@ -245,9 +257,13 @@ public extension UIImage {
                 }
                 
                 if hasBlur {
-                    vImageMatrixMultiply_ARGB8888(&effectOutBuffer, &effectInBuffer, saturationMatrix, Int32(divisor), nil, nil, vImage_Flags(kvImageNoFlags))
+                    vImageMatrixMultiply_ARGB8888(&effectOutBuffer, &effectInBuffer,
+                                                  saturationMatrix, Int32(divisor), nil, nil,
+                                                  vImage_Flags(kvImageNoFlags))
                 } else {
-                    vImageMatrixMultiply_ARGB8888(&effectInBuffer, &effectOutBuffer, saturationMatrix, Int32(divisor), nil, nil, vImage_Flags(kvImageNoFlags))
+                    vImageMatrixMultiply_ARGB8888(&effectInBuffer, &effectOutBuffer,
+                                                  saturationMatrix, Int32(divisor), nil, nil,
+                                                  vImage_Flags(kvImageNoFlags))
                 }
             }
             

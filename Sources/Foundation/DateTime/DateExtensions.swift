@@ -10,7 +10,8 @@
 import Foundation
 
 extension Calendar.Component {
-    static let dateTimeSet: Set<Calendar.Component> = [.year, .month, .day, .month, .hour, .minute, .second, .weekday, .weekdayOrdinal]
+    static let dateTimeSet: Set<Calendar.Component> = [.year, .month, .day, .month, .hour,
+                                                       .minute, .second, .weekday, .weekdayOrdinal]
 }
 
 public extension Date {
@@ -57,7 +58,9 @@ public extension Date {
         let calendar = self.calendar
         let components1 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: self)
         let components2 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: date)
-        return (components1.year == components2.year) && (components1.month == components2.month) && (components1.day == components2.day)
+        return (components1.year == components2.year) &&
+            (components1.month == components2.month) &&
+            (components1.day == components2.day)
     }
     
     var era: Int {

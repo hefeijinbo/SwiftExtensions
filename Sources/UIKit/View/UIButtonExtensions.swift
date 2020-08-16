@@ -61,12 +61,15 @@ public extension UIButton {
         var titleInsets: UIEdgeInsets!
         var imageInsets: UIEdgeInsets!
         
-        switch (position){
+        switch position {
         case .top:
-            titleInsets = UIEdgeInsets(top: -(imageSize.height + titleSize.height + spacing), left: -(imageSize.width), bottom: 0, right: 0)
+            titleInsets = UIEdgeInsets(top: -(imageSize.height + titleSize.height + spacing),
+                                       left: -(imageSize.width),
+                                       bottom: 0, right: 0)
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -titleSize.width)
         case .bottom:
-            titleInsets = UIEdgeInsets(top: (imageSize.height + titleSize.height + spacing), left: -(imageSize.width), bottom: 0, right: 0)
+            titleInsets = UIEdgeInsets(top: (imageSize.height + titleSize.height + spacing),
+                                       left: -(imageSize.width), bottom: 0, right: 0)
             imageInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: -titleSize.width)
         case .left:
             titleInsets = UIEdgeInsets(top: 0, left: -(imageSize.width * 2), bottom: 0, right: 0)
@@ -84,10 +87,10 @@ public extension UIButton {
     
     func addTarget(events: UIControl.Event, action: @escaping (UIButton) -> Void) {
         setAssociatedObject(key: "UIButtonClickKey", value: action)
-        addTarget(self, action: #selector(_btnClickAction), for: events)
+        addTarget(self, action: #selector(btnClickAction), for: events)
     }
     
-    @objc func _btnClickAction() {
+    @objc func btnClickAction() {
         if let action = getAssociatedObject(key: "UIButtonClickKey") as? (UIButton) -> Void {
             DispatchQueue.main.async {
                 action(self)

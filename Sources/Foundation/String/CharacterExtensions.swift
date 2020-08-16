@@ -47,4 +47,3 @@ public extension Character {
         return String(self).uppercased().first!
     }
 }
-

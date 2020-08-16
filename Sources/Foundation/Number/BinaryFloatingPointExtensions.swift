@@ -53,7 +53,7 @@ public extension NSNumber {
 @objc public enum NSFloatingPointRoundingRule: Int {
     case toNearestOrAwayFromZero = 0
     case toNearestOrEven
-    case up
+    case upRule
     case down
     case towardZero
     case awayFromZero
@@ -65,7 +65,7 @@ public extension NSNumber {
             swiftMode = .toNearestOrAwayFromZero
         case .toNearestOrEven:
             swiftMode = .toNearestOrEven
-        case .up:
+        case .upRule:
             swiftMode = .up
         case .down:
             swiftMode = .down

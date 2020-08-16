@@ -39,11 +39,14 @@ public extension NSObject {
     }
     
     @objc func postNotification(name: String, object: Any?, userInfo: [AnyHashable: Any]?) {
-        NotificationCenter.default.post(name: Notification.Name(rawValue: name), object: object,userInfo:userInfo )
+        NotificationCenter.default.post(name: Notification.Name(rawValue: name),
+                                        object: object, userInfo: userInfo)
     }
     
     @objc func addNotificationObserver(_ selector: Selector, name: String, object: Any?) {
-        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
+        NotificationCenter.default.addObserver(self, selector: selector,
+                                               name: NSNotification.Name(rawValue: name),
+                                               object: object)
     }
     
     @objc func removeNotificationObserver() {

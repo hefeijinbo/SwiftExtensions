@@ -52,5 +52,3 @@ public extension NSURLRequest {
         return (self as URLRequest).curlString
     }
 }
-
-

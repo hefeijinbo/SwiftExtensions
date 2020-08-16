@@ -15,11 +15,17 @@ public extension UISegmentedControl {
             let tintColorImage = UIImage(color: tintColor)
             setBackgroundImage(UIImage(color: backgroundColor ?? .clear), for: .normal, barMetrics: .default)
             setBackgroundImage(tintColorImage, for: .selected, barMetrics: .default)
-            setBackgroundImage(UIImage(color: tintColor.withAlphaComponent(0.2)), for: .highlighted, barMetrics: .default)
+            setBackgroundImage(UIImage(color: tintColor.withAlphaComponent(0.2)),
+                               for: .highlighted,
+                               barMetrics: .default)
             setBackgroundImage(tintColorImage, for: [.highlighted, .selected], barMetrics: .default)
-            setTitleTextAttributes([.foregroundColor: tintColor!, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .normal)
-            setTitleTextAttributes([.foregroundColor: UIColor.white, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13, weight: .regular)], for: .selected)
-            setDividerImage(tintColorImage, forLeftSegmentState: .normal, rightSegmentState: .normal, barMetrics: .default)
+            let font = UIFont.systemFont(ofSize: 13, weight: .regular)
+            setTitleTextAttributes([.foregroundColor: tintColor!, .font: font], for: .normal)
+            setTitleTextAttributes([.foregroundColor: UIColor.white, .font: font], for: .selected)
+            setDividerImage(tintColorImage,
+                            forLeftSegmentState: .normal,
+                            rightSegmentState: .normal,
+                            barMetrics: .default)
             layer.borderWidth = 1
             layer.borderColor = tintColor.cgColor
         }

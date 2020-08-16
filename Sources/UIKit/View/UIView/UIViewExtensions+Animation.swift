@@ -58,9 +58,10 @@ public extension UIView {
         let scale2 = CATransform3DMakeScale(maxSize, maxSize, 1)
         let scale3 = CATransform3DMakeScale(maxSize - 0.3, maxSize - 0.3, 1)
         let scale4 = CATransform3DMakeScale(1.0, 1.0, 1)
-        
-        let frameValues = [NSValue(caTransform3D: scale1), NSValue(caTransform3D: scale2), NSValue(caTransform3D: scale3), NSValue(caTransform3D: scale4)]
-        
+        let frameValues = [NSValue(caTransform3D: scale1),
+                           NSValue(caTransform3D: scale2),
+                           NSValue(caTransform3D: scale3),
+                           NSValue(caTransform3D: scale4)]
         animation.values = frameValues
         
         let frameTimes = [NSNumber(value: 0.05), NSNumber(value: 0.2), NSNumber(value: 0.6), NSNumber(value: 1.0)]
@@ -122,22 +123,23 @@ public extension UIView {
             animations: {
                 self.center = CGPoint(x: endPosition, y: self.center.y)
             }, completion: { finished in
-                if finished {
-                    UIView.animate(
-                        withDuration: TimeInterval(duration / 2),
-                        delay: 1,
-                        options: UIView.AnimationOptions(),
-                        animations: {
-                            self.center = CGPoint(x: startPosition, y: self.center.y)
-                        }, completion: { finished in
-                            if finished {
-                                if repeatAnimation {
-                                    self.translateAround(topView: topView, duration: duration, direction: direction, repeatAnimation: repeatAnimation, startFromEdge: startFromEdge)
-                                }
-                            }
-                        }
-                    )
+                if !finished {
+                    return
                 }
+                UIView.animate(
+                    withDuration: TimeInterval(duration / 2),
+                    delay: 1,
+                    options: UIView.AnimationOptions(),
+                    animations: {
+                        self.center = CGPoint(x: startPosition, y: self.center.y)
+                }, completion: { finished in
+                    if finished && repeatAnimation {
+                        self.translateAround(topView: topView, duration: duration,
+                                             direction: direction, repeatAnimation: repeatAnimation,
+                                             startFromEdge: startFromEdge)
+                    }
+                }
+                )
             }
         )
     }

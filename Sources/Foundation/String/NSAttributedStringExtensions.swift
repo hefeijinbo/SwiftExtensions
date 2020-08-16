@@ -10,7 +10,8 @@ import UIKit
 
 public extension NSAttributedString {
     @objc convenience init(string: String, foregroundColor: UIColor, systemFontSize: CGFloat) {
-        self.init(string: string, attributes: [.foregroundColor: foregroundColor, .font: UIFont.systemFont(ofSize: systemFontSize)])
+        let font = UIFont.systemFont(ofSize: systemFontSize)
+        self.init(string: string, attributes: [.foregroundColor: foregroundColor, .font: font])
     }
     
     @objc var medium: NSAttributedString {
@@ -64,8 +65,8 @@ public extension NSAttributedString {
     ///   - options: 在匹配期间应用于表达式的正则表达式选项。看到NSRegularExpression可能值的选项。
     /// - Returns: 一个NSAttributedString，其属性应用于与模式匹配的子字符串
     @objc func applying(attributes: [NSAttributedString.Key: Any],
-                  toRangesMatching pattern: String,
-                  options: NSRegularExpression.Options = []) -> NSAttributedString {
+                        toRangesMatching pattern: String,
+                        options: NSRegularExpression.Options = []) -> NSAttributedString {
         guard let pattern = try? NSRegularExpression(pattern: pattern, options: options) else { return self }
 
         let matches = pattern.matches(in: string, options: [], range: NSRange(0..<length))

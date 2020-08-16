@@ -26,7 +26,8 @@ public extension Dictionary {
         guard JSONSerialization.isValidJSONObject(self) else {
             throw SwiftExtensionsError.jsonError(reason: .invalidJSON)
         }
-        let options = (pretty == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        let options = (pretty == true) ? JSONSerialization.WritingOptions.prettyPrinted
+            : JSONSerialization.WritingOptions()
         return try JSONSerialization.data(withJSONObject: self, options: options)
     }
     

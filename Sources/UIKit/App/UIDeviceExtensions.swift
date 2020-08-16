@@ -91,20 +91,20 @@ public enum DeviceModelType: String {
     case homePod
     case appleTVHD
     case appleTV4K
-    case appleWatchSeries0_38mm
-    case appleWatchSeries0_42mm
-    case appleWatchSeries1_38mm
-    case appleWatchSeries1_42mm
-    case appleWatchSeries2_38mm
-    case appleWatchSeries2_42mm
-    case appleWatchSeries3_38mm
-    case appleWatchSeries3_42mm
-    case appleWatchSeries4_40mm
-    case appleWatchSeries4_44mm
-    case appleWatchSeries5_40mm
-    case appleWatchSeries5_44mm
+    case appleWatchSeries0With38mm
+    case appleWatchSeries0With42mm
+    case appleWatchSeries1With38mm
+    case appleWatchSeries1With42mm
+    case appleWatchSeries2With38mm
+    case appleWatchSeries2With42mm
+    case appleWatchSeries3With38mm
+    case appleWatchSeries3With42mm
+    case appleWatchSeries4With40mm
+    case appleWatchSeries4With44mm
+    case appleWatchSeries5With40mm
+    case appleWatchSeries5With44mm
     case i386Simulator
-    case x86_64Simulator
+    case x8664Simulator
     case unknown
     
     /// "iPhone7,1"
@@ -172,20 +172,20 @@ public enum DeviceModelType: String {
         case "AudioAccessory1,1": return .homePod
         case "AppleTV5,3": return .appleTVHD
         case "AppleTV6,2": return .appleTV4K
-        case "Watch1,1": return .appleWatchSeries0_38mm
-        case "Watch1,2": return .appleWatchSeries0_42mm
-        case "Watch2,6": return .appleWatchSeries1_38mm
-        case "Watch2,7": return .appleWatchSeries1_42mm
-        case "Watch2,3": return .appleWatchSeries2_38mm
-        case "Watch2,4": return .appleWatchSeries2_42mm
-        case "Watch3,1", "Watch3,3": return .appleWatchSeries3_38mm
-        case "Watch3,2", "Watch3,4": return .appleWatchSeries3_42mm
-        case "Watch4,1", "Watch4,3": return .appleWatchSeries4_40mm
-        case "Watch4,2", "Watch4,4": return .appleWatchSeries4_44mm
-        case "Watch5,1", "Watch5,3": return .appleWatchSeries5_40mm
-        case "Watch5,2", "Watch5,4": return .appleWatchSeries5_44mm
+        case "Watch1,1": return .appleWatchSeries0With38mm
+        case "Watch1,2": return .appleWatchSeries0With42mm
+        case "Watch2,6": return .appleWatchSeries1With38mm
+        case "Watch2,7": return .appleWatchSeries1With42mm
+        case "Watch2,3": return .appleWatchSeries2With38mm
+        case "Watch2,4": return .appleWatchSeries2With42mm
+        case "Watch3,1", "Watch3,3": return .appleWatchSeries3With38mm
+        case "Watch3,2", "Watch3,4": return .appleWatchSeries3With42mm
+        case "Watch4,1", "Watch4,3": return .appleWatchSeries4With40mm
+        case "Watch4,2", "Watch4,4": return .appleWatchSeries4With44mm
+        case "Watch5,1", "Watch5,3": return .appleWatchSeries5With40mm
+        case "Watch5,2", "Watch5,4": return .appleWatchSeries5With44mm
         case "i386": return .i386Simulator
-        case "x86_64": return .x86_64Simulator
+        case "x86_64": return .x8664Simulator
         default: return .unknown
         }
     }
