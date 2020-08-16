@@ -11,16 +11,21 @@ import CommonCrypto
 
 public extension String {
     var MD5CryptoString: String {
-        let cStrl = cString(using: String.Encoding.utf8)
-        let buffer = UnsafeMutablePointer<UInt8>.allocate(capacity: 16)
-        CC_MD5(cStrl, UInt32(strlen(cStrl!)), buffer)
-        var string = ""
-        for idx in 0...15 {
-            let obcStrl = String.init(format: "%02x", buffer[idx])
-            string.append(obcStrl)
+        guard let data = data(using: .utf8) else {
+            return self
         }
-        free(buffer)
-        return string
+        var digest = [UInt8](repeating: 0, count: Int(CC_MD5_DIGEST_LENGTH))
+        #if swift(>=5.0)
+        _ = data.withUnsafeBytes { (bytes: UnsafeRawBufferPointer) in
+            return CC_MD5(bytes.baseAddress, CC_LONG(data.count), &digest)
+        }
+        #else
+        _ = data.withUnsafeBytes { bytes in
+            return CC_MD5(bytes, CC_LONG(data.count), &digest)
+        }
+        #endif
+        
+        return digest.reduce(into: "") { $0 += String(format: "%02x", $1) }
     }
     
     func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
