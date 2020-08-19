@@ -64,6 +64,8 @@
 		5CD9B5E224E2DDEE001BA882 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E124E2DDEE001BA882 /* UIViewControllerExtensions.swift */; };
 		5CD9B5E424E2E026001BA882 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */; };
 		5CD9C68B24E42C78001BA882 /* BinaryIntegerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9C68A24E42C78001BA882 /* BinaryIntegerExtensions.swift */; };
+		E402090524EC2D9200F8A71F /* NSStringExtensions+Valid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E402090424EC2D9200F8A71F /* NSStringExtensions+Valid.swift */; };
+		E402090724EC2E7600F8A71F /* NSStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E402090624EC2E7600F8A71F /* NSStringExtensions.swift */; };
 		E448080924E0C65400DB6F81 /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */; };
 		E448080A24E0CA7000DB6F81 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
 		E448080B24E0CA7100DB6F81 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4D103CF24E04DA700B8A4B0 /* UIColorExtensions.swift */; };
@@ -123,6 +125,10 @@
 		E4E413CC24E6BE2B00C11110 /* RuntimeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4E413C624E6BD4300C11110 /* RuntimeExtensions.swift */; };
 		E4E413CD24E6BE7000C11110 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */; };
 		E4E413CE24E6BEA200C11110 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */; };
+		E4ED1FEF24ECAA7900B68F40 /* NSDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ED1FEE24ECAA7900B68F40 /* NSDateExtensions.swift */; };
+		E4ED1FF124ECAABE00B68F40 /* CalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ED1FF024ECAABE00B68F40 /* CalendarExtensions.swift */; };
+		E4ED1FF324ECAC8D00B68F40 /* NSCalendarExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ED1FF224ECAC8D00B68F40 /* NSCalendarExtensions.swift */; };
+		E4ED1FF524ECACDC00B68F40 /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ED1FF424ECACDC00B68F40 /* DateFormatterExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +188,8 @@
 		5CD9B5E124E2DDEE001BA882 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		5CD9B5E324E2E026001BA882 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		5CD9C68A24E42C78001BA882 /* BinaryIntegerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryIntegerExtensions.swift; sourceTree = "<group>"; };
+		E402090424EC2D9200F8A71F /* NSStringExtensions+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSStringExtensions+Valid.swift"; sourceTree = "<group>"; };
+		E402090624EC2E7600F8A71F /* NSStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStringExtensions.swift; sourceTree = "<group>"; };
 		E448080824E0C65400DB6F81 /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		E45A859124E6088000F82A79 /* AVPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayer.swift; sourceTree = "<group>"; };
 		E46247ED24E210CA008AA568 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
@@ -223,6 +231,10 @@
 		E4DF924F24E41F4B00A78C58 /* StringExtensions+Valid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StringExtensions+Valid.swift"; sourceTree = "<group>"; };
 		E4E413C624E6BD4300C11110 /* RuntimeExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeExtensions.swift; sourceTree = "<group>"; };
 		E4E413CA24E6BE1700C11110 /* RuntimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuntimeTests.swift; sourceTree = "<group>"; };
+		E4ED1FEE24ECAA7900B68F40 /* NSDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSDateExtensions.swift; sourceTree = "<group>"; };
+		E4ED1FF024ECAABE00B68F40 /* CalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarExtensions.swift; sourceTree = "<group>"; };
+		E4ED1FF224ECAC8D00B68F40 /* NSCalendarExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCalendarExtensions.swift; sourceTree = "<group>"; };
+		E4ED1FF424ECACDC00B68F40 /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -518,6 +530,8 @@
 			children = (
 				5C4B948624E002C900500FCE /* StringExtensions.swift */,
 				E4DF924F24E41F4B00A78C58 /* StringExtensions+Valid.swift */,
+				E402090624EC2E7600F8A71F /* NSStringExtensions.swift */,
+				E402090424EC2D9200F8A71F /* NSStringExtensions+Valid.swift */,
 				5C574D6C24DEBB6400A59183 /* CharacterExtensions.swift */,
 				5C574D4824DE775700A59183 /* NSAttributedStringExtensions.swift */,
 			);
@@ -528,6 +542,10 @@
 			isa = PBXGroup;
 			children = (
 				E4DB86CE24DE2E1F0042F79D /* DateExtensions.swift */,
+				E4ED1FEE24ECAA7900B68F40 /* NSDateExtensions.swift */,
+				E4ED1FF024ECAABE00B68F40 /* CalendarExtensions.swift */,
+				E4ED1FF224ECAC8D00B68F40 /* NSCalendarExtensions.swift */,
+				E4ED1FF424ECACDC00B68F40 /* DateFormatterExtensions.swift */,
 			);
 			path = DateTime;
 			sourceTree = "<group>";
@@ -705,6 +723,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4ED1FEF24ECAA7900B68F40 /* NSDateExtensions.swift in Sources */,
+				E402090524EC2D9200F8A71F /* NSStringExtensions+Valid.swift in Sources */,
 				5C574D5424DE9E1100A59183 /* URLExtensions.swift in Sources */,
 				5C3B401A24E96A8B00AC21D6 /* NSNumberExtensions.swift in Sources */,
 				E4D103CB24E03EEA00B8A4B0 /* DispatchQueueExtensions.swift in Sources */,
@@ -723,8 +743,10 @@
 				E4DB86CF24DE2E1F0042F79D /* DateExtensions.swift in Sources */,
 				5CD9B5D224E2D6B7001BA882 /* UISegmentedControlExtensions.swift in Sources */,
 				E4DB869524DE295F0042F79D /* AppDelegate.swift in Sources */,
+				E4ED1FF124ECAABE00B68F40 /* CalendarExtensions.swift in Sources */,
 				E4AA707B24E80F4B006E6C21 /* UIViewExtensions+Animation.swift in Sources */,
 				E4AA706F24E7FF51006E6C21 /* ResultExtensions.swift in Sources */,
+				E402090724EC2E7600F8A71F /* NSStringExtensions.swift in Sources */,
 				5C4B948B24E0074800500FCE /* SignedNumericExtensions.swift in Sources */,
 				E4AA707124E8049B006E6C21 /* UIImageExtensions+Create.swift in Sources */,
 				5CD9B5D024E2D628001BA882 /* UISearchBarExtensions.swift in Sources */,
@@ -748,6 +770,7 @@
 				5CD9B20224E18FC3001BA882 /* UIImageExtensions.swift in Sources */,
 				E46247F224E216B4008AA568 /* UINavigationBarExtensions.swift in Sources */,
 				5C574D7E24DEDE1600A59183 /* SwiftExtensionsError.swift in Sources */,
+				E4ED1FF524ECACDC00B68F40 /* DateFormatterExtensions.swift in Sources */,
 				5CD9B5E224E2DDEE001BA882 /* UIViewControllerExtensions.swift in Sources */,
 				5CD9B5CC24E2D4CA001BA882 /* UINavigationControllerExtensions.swift in Sources */,
 				5CD9B5D824E2D95F001BA882 /* UITabBarExtensions.swift in Sources */,
@@ -761,6 +784,7 @@
 				5CD9B1FE24E18E72001BA882 /* UICollectionViewExtensions.swift in Sources */,
 				5C574D6924DEB2FD00A59183 /* BinaryFloatingPointExtensions.swift in Sources */,
 				E4AB3A4724E4B08200CB419C /* NSObjectExtensions.swift in Sources */,
+				E4ED1FF324ECAC8D00B68F40 /* NSCalendarExtensions.swift in Sources */,
 				E4AB3A5724E4BF3D00CB419C /* UIScreenExtensions.swift in Sources */,
 				5C76156424E90E8600B90D0E /* NSDataExtensions.swift in Sources */,
 				5CD9B1FC24E18D01001BA882 /* UIButtonExtensions.swift in Sources */,

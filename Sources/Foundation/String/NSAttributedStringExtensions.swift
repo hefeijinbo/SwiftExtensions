@@ -9,21 +9,28 @@
 import UIKit
 
 public extension NSAttributedString {
+    /// 初始化 attributedString
+    /// - Parameters:
+    ///   - string: 字符串
+    ///   - foregroundColor: 文字颜色
+    ///   - systemFontSize: 文字字体
     @objc convenience init(string: String, foregroundColor: UIColor, systemFontSize: CGFloat) {
         let font = UIFont.systemFont(ofSize: systemFontSize)
         self.init(string: string, attributes: [.foregroundColor: foregroundColor, .font: font])
     }
     
-    @objc var medium: NSAttributedString {
+    /// 文字字体设为 system medium
+    @objc var systemMedium: NSAttributedString {
         return applying(attributes: [.font: UIFont.systemFont(ofSize: currentFontSize, weight: .medium)])
     }
     
-    @objc var semibold: NSAttributedString {
+    /// 文字字体设为 system semibold
+    @objc var systemSemibold: NSAttributedString {
         return applying(attributes: [.font: UIFont.systemFont(ofSize: currentFontSize, weight: .semibold)])
     }
     
-    /// 加粗
-    @objc var bold: NSAttributedString {
+    /// 文字字体设为 system bold
+    @objc var systemBold: NSAttributedString {
         return applying(attributes: [.font: UIFont.boldSystemFont(ofSize: currentFontSize)])
     }
 
@@ -42,7 +49,7 @@ public extension NSAttributedString {
         return applying(attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue as Int)])
     }
     
-    /// 颜色
+    /// 设置文字颜色
     @objc func foregroundColor(_ color: UIColor) -> NSAttributedString {
         return applying(attributes: [.foregroundColor: color])
     }
@@ -112,6 +119,7 @@ public extension NSAttributedString {
 }
 
 extension NSAttributedString {
+    /// 获得属性字典
     @objc var attributes: [NSAttributedString.Key: Any] {
         guard self.length > 0 else { return [:] }
         return attributes(at: 0, effectiveRange: nil)
@@ -124,6 +132,7 @@ extension NSAttributedString {
         return copy
     }
     
+    /// 当前文字字体大小
     @objc var currentFontSize: CGFloat {
         guard let font = attributes[.font] as? UIFont else {
             return UIFont.systemFontSize

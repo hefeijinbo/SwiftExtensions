@@ -8,20 +8,11 @@
 
 import Foundation
 
-extension Calendar.Component {
-    static let dateTimeSet: Set<Calendar.Component> = [.year, .month, .day, .month, .hour,
-                                                       .minute, .second, .weekday, .weekdayOrdinal]
-}
-
 public extension Date {
-    var calendar: Calendar {
-        return Calendar(identifier: .gregorian)
-    }
-    
     mutating func addDays(_ days: Int) -> Date {
         var dateComponents = DateComponents()
         dateComponents.day = days
-        guard let newDate = calendar.date(byAdding: dateComponents, to: self) else {
+        guard let newDate = Calendar.gregorian.date(byAdding: dateComponents, to: self) else {
             return self
         }
         self = newDate
@@ -31,7 +22,7 @@ public extension Date {
     mutating func addMonths(_ months: Int) -> Date {
         var dateComponents = DateComponents()
         dateComponents.month = months
-        guard let newDate = calendar.date(byAdding: dateComponents, to: self) else {
+        guard let newDate = Calendar.gregorian.date(byAdding: dateComponents, to: self) else {
             return self
         }
         self = newDate
@@ -41,7 +32,7 @@ public extension Date {
     mutating func addHours(_ hours: Int) -> Date {
         var dateComponents = DateComponents()
         dateComponents.hour = hours
-        guard let newDate = calendar.date(byAdding: dateComponents, to: self) else {
+        guard let newDate = Calendar.gregorian.date(byAdding: dateComponents, to: self) else {
             return self
         }
         self = newDate
@@ -49,12 +40,12 @@ public extension Date {
     }
     
     var daysInMonth: Int {
-        let range = calendar.range(of: .day, in: .month, for: self)
+        let range = Calendar.gregorian.range(of: .day, in: .month, for: self)
         return range?.count ?? 1
     }
     
     func isEqualIgnoringTime(date: Date) -> Bool {
-        let calendar = self.calendar
+        let calendar = Calendar.gregorian
         let components1 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: self)
         let components2 = calendar.dateComponents(Calendar.Component.dateTimeSet, from: date)
         return (components1.year == components2.year) &&
@@ -63,27 +54,28 @@ public extension Date {
     }
     
     var era: Int {
-        return calendar.component(.era, from: self)
+        return Calendar.gregorian.component(.era, from: self)
     }
     
     /// 季度
     var quarter: Int {
-        return calendar.component(.quarter, from: self)
+        return Calendar.gregorian.component(.quarter, from: self)
     }
     
     var weekOfYear: Int {
-        return calendar.component(.weekOfYear, from: self)
+        return Calendar.gregorian.component(.weekOfYear, from: self)
     }
     
     var weekOfMonth: Int {
-        return calendar.component(.weekOfMonth, from: self)
+        return Calendar.gregorian.component(.weekOfMonth, from: self)
     }
 
     var year: Int {
         get {
-            return calendar.component(.year, from: self)
+            return Calendar.gregorian.component(.year, from: self)
         }
         set {
+            let calendar = Calendar.gregorian
             guard newValue > 0 else { return }
             let currentYear = calendar.component(.year, from: self)
             let yearsToAdd = newValue - currentYear
@@ -95,15 +87,15 @@ public extension Date {
 
     var month: Int {
         get {
-            return calendar.component(.month, from: self)
+            return Calendar.gregorian.component(.month, from: self)
         }
         set {
-            let allowedRange = calendar.range(of: .month, in: .year, for: self)!
+            let allowedRange = Calendar.gregorian.range(of: .month, in: .year, for: self)!
             guard allowedRange.contains(newValue) else { return }
 
-            let currentMonth = calendar.component(.month, from: self)
+            let currentMonth = Calendar.gregorian.component(.month, from: self)
             let monthsToAdd = newValue - currentMonth
-            if let date = calendar.date(byAdding: .month, value: monthsToAdd, to: self) {
+            if let date = Calendar.gregorian.date(byAdding: .month, value: monthsToAdd, to: self) {
                 self = date
             }
         }
@@ -111,9 +103,10 @@ public extension Date {
 
     var day: Int {
         get {
-            return calendar.component(.day, from: self)
+            return Calendar.gregorian.component(.day, from: self)
         }
         set {
+            let calendar = Calendar.gregorian
             let allowedRange = calendar.range(of: .day, in: .month, for: self)!
             guard allowedRange.contains(newValue) else { return }
 
@@ -126,14 +119,15 @@ public extension Date {
     }
 
     var weekday: Int {
-        return calendar.component(.weekday, from: self)
+        return Calendar.gregorian.component(.weekday, from: self)
     }
 
     var hour: Int {
         get {
-            return calendar.component(.hour, from: self)
+            return Calendar.gregorian.component(.hour, from: self)
         }
         set {
+            let calendar = Calendar.gregorian
             let allowedRange = calendar.range(of: .hour, in: .day, for: self)!
             guard allowedRange.contains(newValue) else { return }
 
@@ -147,9 +141,10 @@ public extension Date {
 
     var minute: Int {
         get {
-            return calendar.component(.minute, from: self)
+            return Calendar.gregorian.component(.minute, from: self)
         }
         set {
+            let calendar = Calendar.gregorian
             let allowedRange = calendar.range(of: .minute, in: .hour, for: self)!
             guard allowedRange.contains(newValue) else { return }
 
@@ -163,9 +158,10 @@ public extension Date {
 
     var second: Int {
         get {
-            return calendar.component(.second, from: self)
+            return Calendar.gregorian.component(.second, from: self)
         }
         set {
+            let calendar = Calendar.gregorian
             let allowedRange = calendar.range(of: .second, in: .minute, for: self)!
             guard allowedRange.contains(newValue) else { return }
 
@@ -179,9 +175,10 @@ public extension Date {
 
     var nanosecond: Int {
         get {
-            return calendar.component(.nanosecond, from: self)
+            return Calendar.gregorian.component(.nanosecond, from: self)
         }
         set {
+            let calendar = Calendar.gregorian
             let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self)!
             guard allowedRange.contains(newValue) else { return }
             let currentNanoseconds = calendar.component(.nanosecond, from: self)
@@ -194,9 +191,10 @@ public extension Date {
 
     var millisecond: Int {
         get {
-            return calendar.component(.nanosecond, from: self) / 1_000_000
+            return Calendar.gregorian.component(.nanosecond, from: self) / 1_000_000
         }
         set {
+            let calendar = Calendar.gregorian
             let nanoSeconds = newValue * 1_000_000
             let allowedRange = calendar.range(of: .nanosecond, in: .second, for: self)!
             guard allowedRange.contains(nanoSeconds) else { return }
@@ -215,49 +213,49 @@ public extension Date {
     }
 
     var isInToday: Bool {
-        return calendar.isDateInToday(self)
+        return Calendar.gregorian.isDateInToday(self)
     }
 
     var isInYesterday: Bool {
-        return calendar.isDateInYesterday(self)
+        return Calendar.gregorian.isDateInYesterday(self)
     }
 
     var isInTomorrow: Bool {
-        return calendar.isDateInTomorrow(self)
+        return Calendar.gregorian.isDateInTomorrow(self)
     }
 
     var isInWeekend: Bool {
-        return calendar.isDateInWeekend(self)
+        return Calendar.gregorian.isDateInWeekend(self)
     }
 
     var isWorkday: Bool {
-        return !calendar.isDateInWeekend(self)
+        return !Calendar.gregorian.isDateInWeekend(self)
     }
 
     var isInCurrentWeek: Bool {
-        return calendar.isDate(self, equalTo: Date(), toGranularity: .weekOfYear)
+        return Calendar.gregorian.isDate(self, equalTo: Date(), toGranularity: .weekOfYear)
     }
 
     var isInCurrentMonth: Bool {
-        return calendar.isDate(self, equalTo: Date(), toGranularity: .month)
+        return Calendar.gregorian.isDate(self, equalTo: Date(), toGranularity: .month)
     }
 
     var isInCurrentYear: Bool {
-        return calendar.isDate(self, equalTo: Date(), toGranularity: .year)
+        return Calendar.gregorian.isDate(self, equalTo: Date(), toGranularity: .year)
     }
 
     func string(format: String) -> String {
-        let dateFormatter = DateFormatter()
+        let dateFormatter = DateFormatter.formatter
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
     
     var yesterday: Date {
-        return calendar.date(byAdding: .day, value: -1, to: self) ?? Date()
+        return Calendar.gregorian.date(byAdding: .day, value: -1, to: self) ?? Date()
     }
 
     var tomorrow: Date {
-        return calendar.date(byAdding: .day, value: 1, to: self) ?? Date()
+        return Calendar.gregorian.date(byAdding: .day, value: 1, to: self) ?? Date()
     }
     
     static var is12HourTimeFormat: Bool {
@@ -266,130 +264,5 @@ public extension Date {
         dateFormatter.dateStyle = .none
         let dateString = dateFormatter.string(from: Date())
         return dateString.contains(dateFormatter.amSymbol) || dateString.contains(dateFormatter.pmSymbol)
-    }
-}
-
-public extension NSDate {
-    @objc func addDays(_ days: Int) -> Date {
-        var date = (self as Date)
-        return date.addDays(days)
-    }
-    
-    @objc func addMonths(_ months: Int) -> Date {
-        var date = (self as Date)
-        return date.addMonths(months)
-    }
-    
-    @objc func isEqualIgnoringTime(date: Date) -> Bool {
-        return (self as Date).isEqualIgnoringTime(date: date)
-    }
-    
-    @objc var era: Int {
-        return (self as Date).era
-    }
-    
-    /// 季度
-    @objc var quarter: Int {
-        return (self as Date).quarter
-    }
-    
-    @objc var weekOfYear: Int {
-        return (self as Date).weekOfYear
-    }
-    
-    @objc var weekOfMonth: Int {
-        return (self as Date).weekOfMonth
-    }
-
-    @objc var year: Int {
-        return (self as Date).year
-    }
-
-    @objc var month: Int {
-        return (self as Date).month
-    }
-
-    @objc var day: Int {
-        return (self as Date).day
-    }
-
-    @objc var weekday: Int {
-        return (self as Date).weekday
-    }
-
-    @objc var hour: Int {
-        return (self as Date).hour
-    }
-
-    @objc var minute: Int {
-        return (self as Date).minute
-    }
-
-    @objc var second: Int {
-        return (self as Date).second
-    }
-
-    @objc var nanosecond: Int {
-        return (self as Date).nanosecond
-    }
-
-    @objc var millisecond: Int {
-        return (self as Date).millisecond
-    }
-
-    @objc var isInFuture: Bool {
-        return (self as Date).isInFuture
-    }
-
-    @objc var isInPast: Bool {
-        return (self as Date).isInPast
-    }
-
-    @objc var isInToday: Bool {
-        return (self as Date).isInToday
-    }
-
-    @objc var isInYesterday: Bool {
-        return (self as Date).isInYesterday
-    }
-
-    @objc var isInTomorrow: Bool {
-        return (self as Date).isInTomorrow
-    }
-
-    @objc var isInWeekend: Bool {
-        return (self as Date).isInWeekend
-    }
-
-    @objc var isWorkday: Bool {
-        return (self as Date).isWorkday
-    }
-
-    @objc var isInCurrentWeek: Bool {
-        return (self as Date).isInCurrentWeek
-    }
-
-    @objc var isInCurrentMonth: Bool {
-        return (self as Date).isInCurrentMonth
-    }
-
-    @objc var isInCurrentYear: Bool {
-        return (self as Date).isInCurrentYear
-    }
-
-    @objc func string(format: String) -> String {
-        return (self as Date).string(format: format)
-    }
-    
-    @objc var yesterday: Date {
-        return (self as Date).yesterday
-    }
-
-    @objc var tomorrow: Date {
-        return (self as Date).tomorrow
-    }
-    
-    @objc static var is12HourTimeFormat: Bool {
-        return Date.is12HourTimeFormat
     }
 }

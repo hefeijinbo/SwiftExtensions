@@ -9,6 +9,7 @@
 import UIKit
 
 public extension Character {
+    /// 是否 Emoji
     var isEmoji: Bool {
         let scalarValue = unicodeScalars.first!.value
         switch scalarValue {

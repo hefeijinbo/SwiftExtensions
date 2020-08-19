@@ -10,7 +10,8 @@ import UIKit
 import CommonCrypto
 
 public extension String {
-    var MD5CryptoString: String {
+    /// md5 加密
+    var md5CryptoString: String {
         guard let data = data(using: .utf8) else {
             return self
         }
@@ -28,10 +29,12 @@ public extension String {
         return digest.reduce(into: "") { $0 += String(format: "%02x", $1) }
     }
     
+    /// 计算文字宽度
     func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
         return (self as NSString).boundingRectWidth(fontSize: fontSize)
     }
     
+    /// 解析成 json 字典
     var jsonDic: [String: Any] {
         guard let data = data(using: .utf8) else {
             return [:]
@@ -40,6 +43,7 @@ public extension String {
         return dic
     }
     
+    /// 解析成 json 字典数组
     var jsonDicArray: [[String: Any]] {
         guard let data = data(using: .utf8) else {
             return []
@@ -48,6 +52,7 @@ public extension String {
         return array ?? []
     }
     
+    /// 获得整数值
     var intValue: Int {
         if let value = Int(self) {
             return value
@@ -58,6 +63,7 @@ public extension String {
         return 0
     }
     
+    /// 获得 double 值
     var doubleValue: Double {
         if let value = Double(self) {
             return value
@@ -65,7 +71,8 @@ public extension String {
         return 0.0
     }
     
-    var base64Decoded: String? {
+    /// base64字符串 Decode 出原始字符串
+    var base64DecodedString: String? {
         let remainder = count % 4
         var padding = ""
         if remainder > 0 {
@@ -76,11 +83,14 @@ public extension String {
         return String(data: data, encoding: .utf8)
     }
     
-    var base64Encoded: String? {
+    /// 获取 base64 编码的字符串
+    var base64EncodedString: String? {
         let plainData = data(using: .utf8)
         return plainData?.base64EncodedString()
     }
     
+    /// 获取日期
+    /// - Parameter format: 日期格式
     func date(format: String) -> Date? {
         let selfLowercased = trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         let formatter = DateFormatter()
@@ -88,7 +98,7 @@ public extension String {
         return formatter.date(from: selfLowercased)
     }
 
-    /// 安全下标字符串在给定范围内。
+    /// 获取子字符串
     ///
     /// "Hello World!"[range: 6..<11] -> "World"
     func substring<R>(range: R) -> String? where R: RangeExpression, R.Bound == Int {
@@ -102,6 +112,10 @@ public extension String {
         return String(self[lowerIndex..<upperIndex])
     }
     
+    /// 获取子字符串
+    /// - Parameters:
+    ///   - index: 开始索引
+    ///   - length: 子字符串长度
     func substring(from index: Int, length: Int) -> String? {
         guard length >= 0, index >= 0, index < count  else { return nil }
         guard index.advanced(by: length) <= count else {
@@ -141,7 +155,7 @@ public extension String {
     
     /// 文字转图片
     func toTextImage(fontSize: CGFloat, textColor: UIColor) -> UIImage? {
-        let imgHeight: CGFloat = 16.0
+        let imgHeight: CGFloat = 40.0
         let imgWidth = boundingRectWidth(fontSize: fontSize)
         let attributeStr = NSAttributedString(string: self, attributes: [.font: fontSize, .foregroundColor: textColor])
         UIGraphicsBeginImageContextWithOptions(CGSize(width: imgWidth, height: imgHeight), false, UIScreen.main.scale)
@@ -154,7 +168,6 @@ public extension String {
         context.setCharacterSpacing(10.0)
         context.setTextDrawingMode(CGTextDrawingMode.fill)
         context.setFillColor(UIColor.white.cgColor)
-        
         attributeStr.draw(in: CGRect(x: 0.0, y: 0.0, width: imgWidth, height: imgHeight))
         
         let newImg = UIGraphicsGetImageFromCurrentImageContext()
@@ -214,46 +227,5 @@ public extension String {
         } else {
             return qrCodeImage
         }
-    }
-}
-
-public extension NSString {
-    @objc var MD5CryptoString: String {
-        return (self as String).MD5CryptoString
-    }
-    
-    /// 计算显示宽度
-    @objc func boundingRectWidth(fontSize: CGFloat) -> CGFloat {
-        return boundingRect(with: CGSize(width: CGFloat.infinity, height: 40),
-                            attributes: [.font: UIFont.systemFont(ofSize: fontSize)],
-                            context: nil).width
-    }
-    
-    @objc var jsonDic: [String: Any] {
-        return (self as String).jsonDic
-    }
-    
-    @objc var jsonDicArray: [[String: Any]] {
-        return (self as String).jsonDicArray
-    }
-    
-    @objc var base64Decoded: String? {
-        return (self as String).base64Decoded
-    }
-    
-    @objc var base64Encoded: String? {
-        return (self as String).base64Encoded
-    }
-    
-    @objc func date(format: String) -> Date? {
-        return (self as String).date(format: format)
-    }
-    
-    /// 生成二维码
-      ///
-      /// - Parameters:
-      ///   - centerImg: 中间的小图
-    func createQRCode(centerImg: UIImage?) -> UIImage? {
-        return (self as String).createQRCode(centerImg: centerImg)
     }
 }

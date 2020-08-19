@@ -9,6 +9,7 @@
 import UIKit
 
 public extension String {
+    // 验证手机号
     var isValidPhoneNumber: Bool {
         if self.count == 0 {
             return false
@@ -22,6 +23,7 @@ public extension String {
         }
     }
     
+    /// 验证邮箱
     var isValidEmail: Bool {
         if self.count == 0 {
             return false
@@ -40,6 +42,7 @@ public extension String {
         return NSPredicate(format: "SELF MATCHES %@", "^[0-9]+$").evaluate(with: self)
     }
     
+    /// 验证 URL
     var isValidUrl: Bool {
         return URL(string: self) != nil
     }
@@ -47,24 +50,5 @@ public extension String {
     /// 身份证
     var isIdCard: Bool {
         return NSPredicate(format: "SELF MATCHES %@", "^(\\d{14}|\\d{17})(\\d|[xX])$").evaluate(with: self)
-    }
-}
-
-public extension NSString {
-    @objc var isValidPhoneNumber: Bool {
-        return (self as String).isValidPhoneNumber
-    }
-    
-    @objc var isValidEmail: Bool {
-        return (self as String).isValidEmail
-    }
-    
-    @objc var isValidUrl: Bool {
-        return (self as String).isValidUrl
-    }
-    
-    /// 是否是数字
-    @objc var isValidNumber: Bool {
-        return (self as String).isValidNumber
     }
 }
