@@ -54,7 +54,7 @@ public func printClassMethods(_ cls: AnyClass) {
     free(methods)
 }
 
-/// Should be placed in dispatch_once or Load
+/// 运行时替换实例方法实现 dispatch_once 或 Load 方法中使用
 public func swizzleInstanceMethod(for cls: AnyClass, original: Selector, override: Selector) {
     guard let originalMethod = class_getInstanceMethod(cls, original) else { return }
     guard let overrideMethod = class_getInstanceMethod(cls, override) else { return }
@@ -69,7 +69,7 @@ public func swizzleInstanceMethod(for cls: AnyClass, original: Selector, overrid
     }
 }
 
-/// Should be placed in dispatch_once
+/// 运行时替换类方法实现 dispatch_once 或 Load 方法中使用
 public func swizzleClassMethod(for cls: AnyClass, original: Selector, override: Selector) {
     guard let originalMethod = class_getClassMethod(cls, original) else { return }
     guard let overrideMethod = class_getClassMethod(cls, override) else { return }

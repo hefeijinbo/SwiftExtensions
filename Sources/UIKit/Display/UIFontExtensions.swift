@@ -46,7 +46,7 @@ public enum FontName: String {
 }
 
 public extension UIFont {
-    /// 系统字体加粗
+    /// 系统字体 bold
     @objc var systemBold: UIFont {
         return UIFont(descriptor: fontDescriptor.withSymbolicTraits(.traitBold)!, size: 0)
     }
@@ -56,6 +56,11 @@ public extension UIFont {
         return UIFont(descriptor: fontDescriptor.withSymbolicTraits(.traitItalic)!, size: 0)
     }
     
+    /// 获得 font
+    /// - Parameters:
+    ///   - name: 字体名称
+    ///   - type: 字体类型
+    ///   - size: 字体大小
     static func getFont(name: FontName, type: FontType, size: CGFloat) -> UIFont {
         let fontName = name.rawValue + "-" + type.rawValue
         if let font = UIFont(name: fontName, size: size) {

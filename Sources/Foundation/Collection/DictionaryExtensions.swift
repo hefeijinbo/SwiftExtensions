@@ -9,12 +9,14 @@
 import Foundation
 
 public extension Dictionary {
+    /// 判断 key 是否能取到值
     func has(key: Key) -> Bool {
         return index(forKey: key) != nil
     }
     
-    func print() {
-        let json = try? jsonString(pretty: true)
+    /// 格式化输出到控制台
+    func printPrettyJSON() {
+        let json = jsonString(pretty: true)
         Swift.print(json ?? "")
     }
     
@@ -22,19 +24,21 @@ public extension Dictionary {
         keys.forEach { removeValue(forKey: $0) }
     }
     
-    func jsonData(pretty: Bool = false) throws -> Data {
+    func jsonData(pretty: Bool = false) -> Data? {
         guard JSONSerialization.isValidJSONObject(self) else {
-            throw SwiftExtensionsError.jsonError(reason: .invalidJSON)
+            return nil
         }
         let options = (pretty == true) ? JSONSerialization.WritingOptions.prettyPrinted
             : JSONSerialization.WritingOptions()
-        return try JSONSerialization.data(withJSONObject: self, options: options)
+        return try? JSONSerialization.data(withJSONObject: self, options: options)
     }
     
-    func jsonString(pretty: Bool = false) throws -> String {
-        let data = try jsonData(pretty: pretty)
+    func jsonString(pretty: Bool = false) -> String? {
+        guard let data = jsonData(pretty: pretty) else {
+            return nil
+        }
         guard let string = String(data: data, encoding: .utf8) else {
-            throw SwiftExtensionsError.invalidData
+            return nil
         }
         return string
     }
@@ -63,7 +67,7 @@ public extension NSDictionary {
         return try (self as Dictionary).jsonString(pretty: pretty)
     }
     
-    @objc func print() {
+    @objc func printPrettyJSON() {
         let json = try? jsonString(pretty: true)
         Swift.print(json ?? "")
     }

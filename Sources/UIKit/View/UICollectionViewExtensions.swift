@@ -11,7 +11,7 @@ import UIKit
 public extension UICollectionView {
     /// 计算正好填满 collectionView 的 cell size
     /// - Parameters:
-    ///   - cellCount: 当前行或者列填充的 cell 数量
+    ///   - cellCount: 当前滚动方向的垂直方向需要填充的 cell 数量
     @objc func fillCellSize(cellCount: Int) -> CGSize {
         guard let layout = collectionViewLayout as? UICollectionViewFlowLayout else {
             return collectionViewLayout.collectionViewContentSize
@@ -30,6 +30,7 @@ public extension UICollectionView {
         }
     }
     
+    /// 安全滑动到指定 item
     @objc func scrollToItemSafe(at indexPath: IndexPath, at scrollPosition: UICollectionView.ScrollPosition, animated: Bool) {
         guard indexPath.item >= 0 &&
             indexPath.section >= 0 &&

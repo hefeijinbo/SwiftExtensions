@@ -22,6 +22,7 @@ public extension Sequence where Element: Equatable {
 }
 
 public extension Sequence where Element: Numeric {
+    /// 获取所有数字相加的值
     func sum() -> Element {
         return reduce(into: 0, +=)
     }

@@ -20,15 +20,13 @@ public extension URL {
     }
     
     /// "https://google.com" -> "https://google.com?q=Swifter%20Swift"
-    func appendingQueryParameters(_ parameters: [String: String]) -> URL {
+    @discardableResult
+    mutating func appendQueryParameters(_ parameters: [String: String]) -> URL {
         var urlComponents = URLComponents(url: self, resolvingAgainstBaseURL: true)!
         urlComponents.queryItems = (urlComponents.queryItems ?? [])
             + parameters.map { URLQueryItem(name: $0, value: $1) }
-        return urlComponents.url!
-    }
-
-    mutating func appendQueryParameters(_ parameters: [String: String]) {
-        self = appendingQueryParameters(parameters)
+        self = urlComponents.url!
+        return self
     }
 
     func queryValue(for key: String) -> String {
@@ -73,8 +71,9 @@ public extension NSURL {
     }
     
     /// "https://google.com" -> "https://google.com?q=Swifter%20Swift"
-    @objc func appendingQueryParameters(_ parameters: [String: String]) -> URL {
-        return (self as URL).appendingQueryParameters(parameters)
+    @objc func appendQueryParameters(_ parameters: [String: String]) -> URL {
+        var url = self as URL
+        return url.appendQueryParameters(parameters)
     }
 
     @objc func queryValue(for key: String) -> String {

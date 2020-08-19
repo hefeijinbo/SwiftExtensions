@@ -16,7 +16,7 @@ public extension UIImage {
     /// 压缩图片
     ///
     /// - Parameter quality: JPEG图像的质量，表示为从0.0到1.0的值。值0.0表示最大压缩(或最低质量)，值1.0表示最小压缩(或最佳质量)(默认值为0.5)。
-    @objc func compress(quality: CGFloat) -> UIImage? {
+    @objc func compressImage(quality: CGFloat) -> UIImage? {
         guard let data = jpegData(compressionQuality: quality) else { return nil }
         return UIImage(data: data)
     }
@@ -25,7 +25,7 @@ public extension UIImage {
     }
     
     /// 压缩图片质量和尺寸
-    @objc func compress(toByte maxLength: Int) -> Data? {
+    @objc func compressImage(maxLength: Int) -> Data? {
         let image: UIImage = self
         var compression: CGFloat = 1
         if let data = image.jpegData(compressionQuality: compression), data.count < maxLength {
@@ -71,7 +71,7 @@ public extension UIImage {
     }
     
     /// 裁剪为指定CGRect大小
-    @objc func crop(to rect: CGRect) -> UIImage {
+    @objc func cropImage(rect: CGRect) -> UIImage {
         guard rect.size.width <= size.width && rect.size.height <= size.height else { return self }
         let scaledRect = rect.applying(CGAffineTransform(scaleX: scale, y: scale))
         guard let image = cgImage?.cropping(to: scaledRect) else { return self }
@@ -83,7 +83,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - toHeight: 新高度
     ///   - opaque: 指示位图是否不透明的标志。
-    @objc func scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
+    @objc func scaleImage(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
         let scale = toHeight / size.height
         let newWidth = size.width * scale
         UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: toHeight), opaque, self.scale)
@@ -94,7 +94,7 @@ public extension UIImage {
     }
 
     /// 等宽高比缩放到指定宽度。
-    @objc func scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
+    @objc func scaleImage(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
         let scale = toWidth / size.width
         let newHeight = size.height * scale
         UIGraphicsBeginImageContextWithOptions(CGSize(width: toWidth, height: newHeight), opaque, self.scale)

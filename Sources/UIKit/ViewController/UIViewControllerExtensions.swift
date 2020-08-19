@@ -23,6 +23,7 @@ public extension UIViewController {
         }
     }
     
+    /// 添加子视图控制器
     @objc func addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         for childVC in self.children {
             childVC.removeFromParent()
@@ -33,6 +34,7 @@ public extension UIViewController {
         child.didMove(toParent: self)
     }
     
+    /// 从 parent viewController 移除
     @objc func remove() {
         willMove(toParent: nil)
         view.removeFromSuperview()

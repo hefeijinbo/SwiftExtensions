@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 打印对象到控制台
 public func printLog<T>(_ object: T, _ file: String = #file, _ function: String = #function, _ line: Int = #line) {
     #if DEBUG
         let value = object

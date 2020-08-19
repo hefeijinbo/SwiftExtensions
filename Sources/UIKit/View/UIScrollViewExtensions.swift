@@ -11,7 +11,6 @@ import UIKit
 public extension UIScrollView {
     /// 获取整个ScrollView的快照图片
     @objc var snapshotImage: UIImage? {
-        // Original Source: https://gist.github.com/thestoics/1204051
         UIGraphicsBeginImageContextWithOptions(contentSize, false, 0)
         defer {
             UIGraphicsEndImageContext()

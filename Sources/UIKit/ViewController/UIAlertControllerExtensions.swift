@@ -9,6 +9,7 @@
 import UIKit
 
 public extension UIAlertController {
+    /// 快捷添加 action
     @discardableResult
     @objc func addAction(title: String, style: UIAlertAction.Style, handler: ((UIAlertAction) -> Void)?) -> UIAlertAction {
         let action = UIAlertAction(title: title, style: style, handler: handler)
@@ -16,6 +17,7 @@ public extension UIAlertController {
         return action
     }
 
+    /// 快捷添加 textField
     @objc func addTextField(text: String?, placeholder: String?, editingChangedTarget: Any?, editingChangedSelector: Selector?) {
         addTextField { textField in
             textField.text = text

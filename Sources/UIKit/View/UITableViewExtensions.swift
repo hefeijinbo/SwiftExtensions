@@ -9,14 +9,17 @@
 import UIKit
 
 public extension UITableView {
+    /// headerView 自动适配高度
     @objc func tableHeaderViewSizeToFit() {
         tableHeaderOrFooterViewSizeToFit(\.tableHeaderView)
     }
 
+    /// footerView 自动适配高度
     @objc func tableFooterViewSizeToFit() {
         tableHeaderOrFooterViewSizeToFit(\.tableFooterView)
     }
 
+    /// 自动适配高度
     private func tableHeaderOrFooterViewSizeToFit(_ keyPath: ReferenceWritableKeyPath<UITableView, UIView?>) {
         guard let headerOrFooterView = self[keyPath: keyPath] else { return }
         let height = headerOrFooterView

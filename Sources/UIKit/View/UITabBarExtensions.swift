@@ -49,36 +49,37 @@ public extension UITabBar {
             }(selectedbg, rect)
         }
 
-        if let itemColor = itemColor {
-            for barItem in barItems as [UITabBarItem] {
-                // item
-                guard let image = barItem.image else { continue }
-
-                barItem.image = { (image: UIImage, color: UIColor) -> UIImage in
-                    UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
-                    color.setFill()
-                    guard let context = UIGraphicsGetCurrentContext() else {
-                        return image
-                    }
-
-                    context.translateBy(x: 0, y: image.size.height)
-                    context.scaleBy(x: 1.0, y: -1.0)
-                    context.setBlendMode(CGBlendMode.normal)
-
-                    let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
-                    guard let mask = image.cgImage else { return image }
-                    context.clip(to: rect, mask: mask)
-                    context.fill(rect)
-
-                    let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-                    UIGraphicsEndImageContext()
-                    return newImage
-                    }(image, itemColor).withRenderingMode(.alwaysOriginal)
-
-                barItem.setTitleTextAttributes([.foregroundColor: itemColor], for: .normal)
-                if let selected = selectedItem {
-                    barItem.setTitleTextAttributes([.foregroundColor: selected], for: .selected)
+        guard let itemColor = itemColor else {
+            return
+        }
+        for barItem in barItems as [UITabBarItem] {
+            // item
+            guard let image = barItem.image else { continue }
+            
+            barItem.image = { (image: UIImage, color: UIColor) -> UIImage in
+                UIGraphicsBeginImageContextWithOptions(image.size, false, image.scale)
+                color.setFill()
+                guard let context = UIGraphicsGetCurrentContext() else {
+                    return image
                 }
+                
+                context.translateBy(x: 0, y: image.size.height)
+                context.scaleBy(x: 1.0, y: -1.0)
+                context.setBlendMode(CGBlendMode.normal)
+                
+                let rect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
+                guard let mask = image.cgImage else { return image }
+                context.clip(to: rect, mask: mask)
+                context.fill(rect)
+                
+                let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+                UIGraphicsEndImageContext()
+                return newImage
+                }(image, itemColor).withRenderingMode(.alwaysOriginal)
+            
+            barItem.setTitleTextAttributes([.foregroundColor: itemColor], for: .normal)
+            if let selected = selectedItem {
+                barItem.setTitleTextAttributes([.foregroundColor: selected], for: .selected)
             }
         }
     }

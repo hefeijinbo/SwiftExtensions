@@ -9,19 +9,25 @@
 import Foundation
 
 public extension Array {
-    func jsonData(pretty: Bool = false) throws -> Data {
+    /// 获取 json Data
+    /// - Parameter pretty: 美观的格式打印
+    func jsonData(pretty: Bool = false) -> Data? {
         guard JSONSerialization.isValidJSONObject(self) else {
-            throw SwiftExtensionsError.jsonError(reason: .invalidJSON)
+            return nil
         }
         let options = (pretty == true) ? JSONSerialization.WritingOptions.prettyPrinted
             : JSONSerialization.WritingOptions()
-        return try JSONSerialization.data(withJSONObject: self, options: options)
+        return try? JSONSerialization.data(withJSONObject: self, options: options)
     }
     
-    func jsonString(pretty: Bool = false) throws -> String {
-        let data = try jsonData(pretty: pretty)
+    /// json 字符串
+    /// - Parameter pretty: 美观的格式打印
+    func jsonString(pretty: Bool = false) -> String? {
+        guard let data = jsonData(pretty: pretty) else {
+            return nil
+        }
         guard let string = String(data: data, encoding: .utf8) else {
-            throw SwiftExtensionsError.invalidData
+            return nil
         }
         return string
     }
@@ -30,7 +36,7 @@ public extension Array {
     ///
     /// [1, 2, 3, 4, 5].safeSwap(from: 3, to: 0) -> [4, 2, 3, 1, 5]
     ///
-    mutating func safeSwap(from index: Int, to otherIndex: Int) {
+    mutating func swapSafe(from index: Int, to otherIndex: Int) {
         guard index != otherIndex else { return }
         guard startIndex..<endIndex ~= index else { return }
         guard startIndex..<endIndex ~= otherIndex else { return }
@@ -93,11 +99,11 @@ public extension Array where Element: Equatable {
 }
 
 public extension NSArray {
-    @objc func jsonData(pretty: Bool = false) throws -> Data {
-        return try (self as Array).jsonData(pretty: pretty)
+    @objc func jsonData(pretty: Bool = false) -> Data? {
+        return (self as Array).jsonData(pretty: pretty)
     }
     
-    @objc func jsonString(pretty: Bool = false) throws -> String {
-        return try (self as Array).jsonString(pretty: pretty)
+    @objc func jsonString(pretty: Bool = false) -> String? {
+        return (self as Array).jsonString(pretty: pretty)
     }
 }

@@ -32,6 +32,7 @@ public extension UIDevice {
         return majorVersion >= 13
     }
     
+    /// 设备型号
     static var modelType: DeviceModelType = DeviceModelType.currentType
     
     /// "iPhone8Plus" "iPhoneXSMax"

@@ -10,7 +10,7 @@ import Dispatch
 import Foundation
 
 public extension DispatchQueue {
-    // 安全的同步调用,防止死锁
+    ///  安全的同步调用,防止死锁
     func syncSafe(_ execute: () -> Void) {
         if label == String(cString: __dispatch_queue_get_label(nil)) {
             execute()
@@ -19,6 +19,7 @@ public extension DispatchQueue {
         sync(execute: execute)
     }
     
+    /// 安全的异步调用
     func asyncSafe(_ execute: @escaping () -> Void) {
         if self === DispatchQueue.main && Thread.isMainThread {
             execute()
@@ -27,6 +28,7 @@ public extension DispatchQueue {
         }
     }
     
+    /// 判断是否主队列
     static var isMainQueue: Bool {
         enum Static {
             static var key: DispatchSpecificKey<Void> = {

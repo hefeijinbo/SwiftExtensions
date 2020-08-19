@@ -9,7 +9,8 @@
 import UIKit
 
 public extension UINavigationBar {
-    @objc func setTitleColor(color: UIColor, titleFont: UIFont) {
+    /// 设置文字颜色和字体
+    @objc func setTitleColor(_ color: UIColor, titleFont: UIFont) {
         var attrs = [NSAttributedString.Key: Any]()
         attrs[.foregroundColor] = color
         attrs[.font] = titleFont

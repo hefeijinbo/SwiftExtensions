@@ -9,6 +9,7 @@
 import UIKit
 
 public extension UINavigationController {
+    /// 使用新的 viewController 覆盖和替换当前 viewController
     @objc func replaceLastWithViewController(_ viewController: UIViewController, animated: Bool) {
         var array = viewControllers
         array.removeLast()
@@ -16,6 +17,7 @@ public extension UINavigationController {
         setViewControllers(array, animated: animated)
     }
     
+    /// 带 completion 回调的 pop
     @objc func popViewController(animated: Bool = true, _ completion: (() -> Void)? = nil) {
         guard let completion = completion else {
             popViewController(animated: animated)
@@ -27,6 +29,7 @@ public extension UINavigationController {
         CATransaction.commit()
     }
 
+    /// 带 completion 回调的 push
     @objc func pushViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         guard let completion = completion else {
             pushViewController(viewController, animated: true)

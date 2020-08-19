@@ -17,22 +17,15 @@ public extension UIColor {
         return UIColor.black.withAlphaComponent(alpha)
     }
     
-    @objc static func color(r: Int, g: Int, b: Int, alpha: CGFloat = 1) -> UIColor {
-        return UIColor(r: r, g: g, b: b, alpha: alpha)
+    /// 使用整形的颜色 component 初始化
+    @objc convenience init(componentRed: Int, green: Int, blue: Int, alpha: Int = 255) {
+        let redValue = CGFloat(componentRed) / 255.0
+        let greenValue = CGFloat(green) / 255.0
+        let blueValue = CGFloat(blue) / 255.0
+        let alphaValue = CGFloat(alpha) / 255.0
+        self.init(red: redValue, green: greenValue, blue: blueValue, alpha: alphaValue)
     }
-    
-    @objc convenience init(r: Int, g: Int, b: Int, alpha: CGFloat = 1) {
-        var trans = alpha
-        if trans < 0 { trans = 0 }
-        if trans > 1 { trans = 1 }
 
-        self.init(red: CGFloat(r) / 255.0, green: CGFloat(g) / 255.0, blue: CGFloat(b) / 255.0, alpha: trans)
-    }
-    
-    @objc func color(hexString: String, alpha: CGFloat = 1) -> UIColor {
-        return UIColor(hexString: hexString, alpha: alpha)
-    }
-        
     @objc convenience init(hexString: String, alpha: CGFloat = 1) {
         var string = ""
         if hexString.lowercased().hasPrefix("0x") {
@@ -50,13 +43,10 @@ public extension UIColor {
         }
 
         let hexValue = Int(string, radix: 16) ?? 0
-        var trans = alpha
-        if trans < 0 { trans = 0 }
-        if trans > 1 { trans = 1 }
         let red = (hexValue >> 16) & 0xff
         let green = (hexValue >> 8) & 0xff
         let blue = hexValue & 0xff
-        self.init(r: red, g: green, b: blue, alpha: trans)
+        self.init(componentRed: red, green: green, blue: blue, alpha: Int(alpha * 255))
     }
     
     /// UIColor 的 RGB A 成分  (0 和 255之间).
@@ -123,8 +113,8 @@ public extension UIColor {
         return cgColor.alpha
     }
     
-    /// 互补色
-    @objc var complementary: UIColor? {
+    /// 获得互补色
+    @objc var complementaryColor: UIColor? {
         let colorSpaceRGB = CGColorSpaceCreateDeviceRGB()
         let convertColorToRGBSpace: ((_ color: UIColor) -> UIColor?) = { color -> UIColor? in
             if self.cgColor.colorSpace!.model == CGColorSpaceModel.monochrome {

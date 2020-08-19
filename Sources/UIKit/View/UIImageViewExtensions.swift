@@ -9,7 +9,7 @@
 import UIKit
 
 public extension UIImageView {
-    @objc func download(from url: URL, placeholder: UIImage? = nil, completionHandler: ((UIImage?) -> Void)? = nil) {
+    @objc func downloadImage(url: URL, placeholder: UIImage? = nil, completionHandler: ((UIImage?) -> Void)? = nil) {
         image = placeholder
         URLSession.shared.dataTask(with: url) { (data, response, _) in
             guard
@@ -27,7 +27,7 @@ public extension UIImageView {
     }
 
     /// 使图像视图模糊
-    @objc func blur(withStyle style: UIBlurEffect.Style = .light) {
+    @objc func blurImage(style: UIBlurEffect.Style = .light) {
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds

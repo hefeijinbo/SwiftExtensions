@@ -14,7 +14,7 @@ public extension UIImage {
     ///
     ///     // Rotate the image by 180°
     ///     image.rotated(by: .pi)
-    @objc func rotated(by radians: CGFloat) -> UIImage? {
+    @objc func rotatImage(radians: CGFloat) -> UIImage? {
         let destRect = CGRect(origin: .zero, size: size)
             .applying(CGAffineTransform(rotationAngle: radians))
         let roundedDestRect = CGRect(x: destRect.origin.x.rounded(),
@@ -23,30 +23,35 @@ public extension UIImage {
                                      height: destRect.height.rounded())
 
         UIGraphicsBeginImageContext(roundedDestRect.size)
-        guard let contextRef = UIGraphicsGetCurrentContext() else { return nil }
+        defer {
+            UIGraphicsEndImageContext()
+        }
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
 
-        contextRef.translateBy(x: roundedDestRect.width / 2, y: roundedDestRect.height / 2)
-        contextRef.rotate(by: radians)
+        context.translateBy(x: roundedDestRect.width / 2, y: roundedDestRect.height / 2)
+        context.rotate(by: radians)
 
         draw(in: CGRect(origin: CGPoint(x: -size.width / 2,
                                         y: -size.height / 2),
                         size: size))
 
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
         return newImage
     }
     
-    /// 应用给定的混合模式。
+    /// 混合指定图片
     ///
     /// - Parameters:
-    ///   - image: Image to be added to blend.
+    ///   - otherImage: Image to be added to blend.
     ///   - blendMode: Blend Mode.
     /// - Returns: Returns the image.
-    func blend(image: UIImage, blendMode: CGBlendMode) -> UIImage {
+    func blendImage(otherImage: UIImage, blendMode: CGBlendMode) -> UIImage {
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         
         UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        defer {
+            UIGraphicsEndImageContext()
+        }
         guard let context = UIGraphicsGetCurrentContext() else {
             return self
         }
@@ -55,19 +60,17 @@ public extension UIImage {
         context.fill(rect)
         
         draw(in: rect, blendMode: .normal, alpha: 1)
-        image.draw(in: rect, blendMode: blendMode, alpha: 1)
+        otherImage.draw(in: rect, blendMode: blendMode, alpha: 1)
         
         guard let result = UIGraphicsGetImageFromCurrentImageContext() else {
-            UIGraphicsEndImageContext()
             return self
         }
-        UIGraphicsEndImageContext()
         
         return result
     }
 
-    /// 着色
-    @objc func tint(color: UIColor, blendMode: CGBlendMode, alpha: CGFloat = 1.0) -> UIImage {
+    /// 混合指定颜色(着色)
+    @objc func tintImage(color: UIColor, blendMode: CGBlendMode, alpha: CGFloat = 1.0) -> UIImage {
         let drawRect = CGRect(origin: .zero, size: size)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         defer {
@@ -83,6 +86,9 @@ public extension UIImage {
     /// 填充前景色
     @objc func fillColor(_ color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        defer {
+            UIGraphicsEndImageContext()
+        }
         color.setFill()
         guard let context = UIGraphicsGetCurrentContext() else { return self }
 
@@ -96,7 +102,6 @@ public extension UIImage {
         context.fill(rect)
 
         let newImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
         return newImage
     }
 
@@ -111,7 +116,7 @@ public extension UIImage {
     }
     
     /// 设置图片透明度
-    func applyAlpha(_ alpha: CGFloat) -> UIImage {
+    @objc func applyAlpha(_ alpha: CGFloat) -> UIImage {
         UIGraphicsBeginImageContext(size)
         defer { UIGraphicsEndImageContext() }
         guard let context = UIGraphicsGetCurrentContext() else { return self}
@@ -157,7 +162,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - name: filter 名称
     ///   - parameters: filter 的键和值。一个关键的例子是kCIInputCenterKey。
-    func filter(name: String, parameters: [String: Any] = [:]) -> UIImage {
+    func filterImage(name: String, parameters: [String: Any] = [:]) -> UIImage {
         let context = CIContext(options: nil)
         guard let filter = CIFilter(name: name), let ciImage = CIImage(image: self) else {
             return self
@@ -186,10 +191,10 @@ public extension UIImage {
     ///   - tintColor: 模糊tint color，默认为nil。
     ///   - maskImage: 应用一个蒙版图像，如果你不想蒙版，保留默认值(nil)。
     /// - Returns: 返回转换后的图像。
-    @objc func blur(radius blurRadius: CGFloat,
-                    saturation: CGFloat = 1.8,
-                    tintColor: UIColor? = nil,
-                    maskImage: UIImage? = nil) -> UIImage {
+    @objc func blurImage(radius: CGFloat,
+                         saturation: CGFloat = 1.8,
+                         tintColor: UIColor? = nil,
+                         maskImage: UIImage? = nil) -> UIImage {
         guard size.width > 1 && size.height > 1, let selfCGImage = cgImage else {
             return self
         }
@@ -197,7 +202,7 @@ public extension UIImage {
         let imageRect = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
         var effectImage = self
         
-        let hasBlur = Float(blurRadius) > Float.ulpOfOne
+        let hasBlur = Float(radius) > Float.ulpOfOne
         let saturationABS = abs(saturation - 1)
         let saturationABSFloat = Float(saturationABS)
         let hasSaturationChange = saturationABSFloat > Float.ulpOfOne
@@ -226,7 +231,7 @@ public extension UIImage {
                                                 rowBytes: effectOutContext.bytesPerRow)
             
             if hasBlur {
-                var inputRadius = blurRadius * UIScreen.main.scale
+                var inputRadius = radius * UIScreen.main.scale
                 let sqrt2PI = CGFloat(sqrt(2 * Double.pi))
                 inputRadius = inputRadius * 3.0 * sqrt2PI / 4 + 0.5
                 var radius = UInt32(floor(inputRadius))

@@ -32,6 +32,7 @@ public extension UITextField {
         return view
     }
 
+    /// 添加左侧 Label
     @discardableResult
     @objc func addLeftLabel(text: String, textColor: UIColor, padding: CGFloat) -> UILabel {
         let labelFrame = CGRect(x: -padding, y: 0, width: text.boundingRectWidth(fontSize: 14), height: frame.height)
@@ -43,6 +44,7 @@ public extension UITextField {
         return label
     }
     
+    /// 添加右侧 Label
     @discardableResult
     @objc func addRightLabel(text: String, textColor: UIColor, padding: CGFloat) -> UILabel {
         let labelFrame = CGRect(x: padding, y: 0, width: text.boundingRectWidth(fontSize: 14), height: frame.height)
@@ -54,6 +56,7 @@ public extension UITextField {
         return label
     }
     
+    /// 添加左侧 imageView
     @discardableResult
     @objc func addLeftImageView(image: UIImage, padding: CGFloat) -> UIImageView {
         let iconView = UIView(frame: CGRect(x: 0, y: 0, width: image.size.width + padding, height: image.size.height))
@@ -66,6 +69,7 @@ public extension UITextField {
         return imageView
     }
 
+    /// 添加右侧 imageView
     @discardableResult
     @objc func addRightImageView(image: UIImage, padding: CGFloat) -> UIImageView {
         let iconView = UIView(frame: CGRect(x: 0, y: 0, width: image.size.width + padding, height: image.size.height))

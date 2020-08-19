@@ -85,6 +85,7 @@ public extension UIButton {
         self.imageEdgeInsets = imageInsets
     }
     
+    /// 添加 block 形式 target
     func addTarget(events: UIControl.Event, action: @escaping (UIButton) -> Void) {
         setAssociatedObject(key: "UIButtonClickKey", value: action)
         addTarget(self, action: #selector(btnClickAction), for: events)

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 加锁
 public func synchronized(lock: AnyObject, work: () -> Void) {
     objc_sync_enter(lock)
     work()

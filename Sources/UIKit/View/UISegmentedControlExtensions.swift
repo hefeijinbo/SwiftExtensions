@@ -32,6 +32,7 @@ public extension UISegmentedControl {
         tintColor = color
     }
     
+    /// 标题文案
     @objc var segmentTitles: [String] {
         get {
             let range = 0..<numberOfSegments
@@ -45,6 +46,7 @@ public extension UISegmentedControl {
         }
     }
 
+    /// 图片
     @objc var segmentImages: [UIImage] {
         get {
             let range = 0..<numberOfSegments

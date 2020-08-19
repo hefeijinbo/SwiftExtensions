@@ -21,6 +21,12 @@ public extension UIView {
         return nil
     }
     
+    /// 增加渐变 Layer
+    /// - Parameters:
+    ///   - startColor: 开始颜色
+    ///   - endColor: 结束颜色
+    ///   - startPoint: 开始点 (0, 0)
+    ///   - endPoint: 结束点 (1, 1)
     @objc func addGradientLayer(startColor: UIColor,
                                 endColor: UIColor,
                                 startPoint: CGPoint = CGPoint(x: 0, y: 0),
@@ -51,17 +57,6 @@ public extension UIView {
         guard let context = UIGraphicsGetCurrentContext() else { return nil }
         layer.render(in: context)
         return UIGraphicsGetImageFromCurrentImageContext()
-    }
-    
-    @objc var parentViewController: UIViewController? {
-        weak var parentResponder: UIResponder? = self
-        while parentResponder != nil {
-            parentResponder = parentResponder!.next
-            if let viewController = parentResponder as? UIViewController {
-                return viewController
-            }
-        }
-        return nil
     }
     
     @objc var firstResponderView: UIView? {
@@ -105,6 +100,7 @@ public extension UIView {
         layer.masksToBounds = false
     }
     
+    /// 填充子 view
     @objc func addSubviewToFillContent(_ subview: UIView) {
         addSubview(subview)
         subview.translatesAutoresizingMaskIntoConstraints = false

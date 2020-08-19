@@ -21,7 +21,7 @@ public extension UIView {
     ///   - count: 震动次数
     ///   - duration: 震动持续时间
     ///   - translation: 震动位移
-    @objc func shake(count: Float = 2, duration: TimeInterval = 0.15, translation: Float = 5) {
+    @objc func shakeAnimation(count: Float = 2, duration: TimeInterval = 0.15, translation: Float = 5) {
         let animation = CABasicAnimation(keyPath: "transform.translation.x")
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         animation.repeatCount = count
@@ -33,7 +33,7 @@ public extension UIView {
     }
     
     /// 脉冲效果
-    @objc func pulse(count: Float = 1, duration: TimeInterval = 1) {
+    @objc func pulseAnimation(count: Float = 1, duration: TimeInterval = 1) {
         let animation = CABasicAnimation(keyPath: "opacity")
         animation.duration = duration
         animation.fromValue = 0
@@ -51,7 +51,7 @@ public extension UIView {
     ///   - count: 动画的秒数
     ///   - maxSize: 缩放最大倍数
     ///   - durationPerBeat: 每次心跳时长
-    @objc func heartbeat(count: Float = 1, maxSize: CGFloat = 1.4, durationPerBeat: TimeInterval = 0.5) {
+    @objc func heartbeatAnimation(count: Float = 1, maxSize: CGFloat = 1.4, durationPerBeat: TimeInterval = 0.5) {
         let animation = CAKeyframeAnimation(keyPath: "transform")
         
         let scale1 = CATransform3DMakeScale(0.8, 0.8, 1)
@@ -79,7 +79,7 @@ public extension UIView {
     /// - Parameters:
     ///   - duration: 动画时长
     ///   - direction: 翻转方向
-    @objc func flip(duration: TimeInterval, direction: CATransitionSubtype) {
+    @objc func flipAnimation(duration: TimeInterval, direction: CATransitionSubtype) {
         let transition = CATransition()
         transition.subtype = direction
         transition.startProgress = 0
@@ -100,7 +100,7 @@ public extension UIView {
     ///   - direction: 平移方向
     ///   - repeatAnimation: 动画是否重复
     ///   - startFromEdge: 动画从边缘开始
-    @objc func translateAround(topView: UIView, duration: CGFloat, direction: UIViewAnimationTranslationDirection, repeatAnimation: Bool = true, startFromEdge: Bool = true) {
+    @objc func translateAroundAnimation(topView: UIView, duration: CGFloat, direction: UIViewAnimationTranslationDirection, repeatAnimation: Bool = true, startFromEdge: Bool = true) {
         var startPosition: CGFloat = center.x, endPosition: CGFloat
         switch direction {
         case .leftToRight:
@@ -134,7 +134,7 @@ public extension UIView {
                         self.center = CGPoint(x: startPosition, y: self.center.y)
                 }, completion: { finished in
                     if finished && repeatAnimation {
-                        self.translateAround(topView: topView, duration: duration,
+                        self.translateAroundAnimation(topView: topView, duration: duration,
                                              direction: direction, repeatAnimation: repeatAnimation,
                                              startFromEdge: startFromEdge)
                     }
@@ -150,7 +150,7 @@ public extension UIView {
     ///   - path: 路径
     ///   - count: 动画重复次数
     ///   - duration: 动画时长
-    @objc func animate(path: UIBezierPath, count: Float = 1, duration: TimeInterval, autoreverses: Bool = false) {
+    @objc func moveAnimation(path: UIBezierPath, count: Float = 1, duration: TimeInterval, autoreverses: Bool = false) {
         let animation = CAKeyframeAnimation(keyPath: "position")
         animation.path = path.cgPath
         animation.repeatCount = count

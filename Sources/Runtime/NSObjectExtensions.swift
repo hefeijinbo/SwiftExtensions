@@ -9,10 +9,10 @@
 import UIKit
 
 public extension NSObject {
-    /// 针对 UIViewController 这种特殊情况
+    /// 获得类名
     @objc static var stringFromClass: String {
         let string = NSStringFromClass(self)
-        if string.contains(".") {
+        if string.contains(".") { // 针对 UIViewController 这种特殊情况
             return (string.components(separatedBy: ".").last) ?? ""
         } else {
             return string
@@ -38,11 +38,13 @@ public extension NSObject {
         return objc_getAssociatedObject(self, keyHashValue)
     }
     
+    /// 发送通知
     @objc func postNotification(name: String, object: Any?, userInfo: [AnyHashable: Any]?) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: name),
                                         object: object, userInfo: userInfo)
     }
     
+    /// 添加通知监听
     @objc func addNotificationObserver(_ selector: Selector, name: String, object: Any?) {
         NotificationCenter.default.addObserver(self, selector: selector,
                                                name: NSNotification.Name(rawValue: name),
@@ -53,6 +55,7 @@ public extension NSObject {
         NotificationCenter.default.removeObserver(self)
     }
     
+    /// 获得所有属性和值的描述
     @objc var propertyDescription: String {
         let mirror = Mirror(reflecting: self)
         return mirror.children.map { element -> String in
