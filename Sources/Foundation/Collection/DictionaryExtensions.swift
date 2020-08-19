@@ -59,16 +59,16 @@ public extension NSDictionary {
         return (self as Dictionary).has(key: key)
     }
     
-    @objc func jsonData(pretty: Bool = false) throws -> Data {
-        return try (self as Dictionary).jsonData(pretty: pretty)
+    @objc func jsonData(pretty: Bool = false) -> Data? {
+        return (self as Dictionary).jsonData(pretty: pretty)
     }
     
-    @objc func jsonString(pretty: Bool = false) throws -> String {
-        return try (self as Dictionary).jsonString(pretty: pretty)
+    @objc func jsonString(pretty: Bool = false) -> String? {
+        return (self as Dictionary).jsonString(pretty: pretty)
     }
     
     @objc func printPrettyJSON() {
-        let json = try? jsonString(pretty: true)
+        let json = jsonString(pretty: true)
         Swift.print(json ?? "")
     }
 }

@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name = 'NiceSwiftExtensions'
-  s.version = '1.1'
+  s.version = '1.2'
   s.license = 'MIT'
-  s.summary = '中国最全最好用的 Swift、Objective-C 和 iOS 扩展, 提高您的生产力'
+  s.summary = 'Swift、Objective-C 和 iOS 扩展'
   s.description = 'SwiftExtensions 包含 Swift、Objective-C 和 iOS 丰富的扩展集合, 每个扩展包含详细的中文注释, 让你一键上手, 迅速提高生产力。'
   s.homepage = 'https://github.com/hefeijinbo/SwiftExtensions'
   s.screenshots = 'https://developer.apple.com/assets/elements/icons/swift-playgrounds/swift-playgrounds-96x96_2x.png'
