@@ -60,4 +60,14 @@ public extension Data {
     var byteArray: [UInt8] {
         return [UInt8](self)
     }
+    
+    /// 十六进制字符串显示
+    var hexString: String {
+        let bytes = [UInt8](self)
+        var hex = ""
+        for byte in bytes {
+            hex += String(format: "%02X", byte)
+        }
+        return hex
+    }
 }
